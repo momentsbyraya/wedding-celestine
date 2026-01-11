@@ -1,0 +1,36 @@
+{
+  "mainDressCode": {
+    "title": "Dress Code",
+    "description": "Strictly formal. No slippers, shorts, jeans, tshirt, or white color. Colors: brown, black, teal green, blue gray, or beige only."
+  },
+  "sections": [
+    {
+      "title": "FORMAL ATTIRE",
+      "type": "image",
+      "image": "/assets/images/dresscode/blue.png",
+      "description": "Strictly formal. No slippers, shorts, jeans, tshirt, or white color. Colors: brown, black, teal green, blue gray, or beige only.",
+      "colors": [
+        {
+          "name": "Brown",
+          "hex": "#8B4513"
+        },
+        {
+          "name": "Black",
+          "hex": "#000000"
+        },
+        {
+          "name": "Teal Green",
+          "hex": "#008080"
+        },
+        {
+          "name": "Blue Gray",
+          "hex": "#708090"
+        },
+        {
+          "name": "Beige",
+          "hex": "#D2B48C"
+        }
+      ]
+    }
+  ]
+} 

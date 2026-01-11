@@ -1,0 +1,25 @@
+{
+  "ceremony": {
+    "name": "Alfredos Events Place",
+    "address": "WR9R+CQV",
+    "city": "Pulilan",
+    "state": "Bulacan",
+    "zip": "Philippines",
+    "time": "3:30 PM",
+    "details": "Schedule: 3:30 PM to 7:30 PM",
+    "googleMapsUrl": "https://maps.app.goo.gl/K5U1RPA6QkfqegNa6?g_st=ipc",
+    "directionsUrl": "https://maps.app.goo.gl/K5U1RPA6QkfqegNa6?g_st=ipc"
+  },
+  "reception": {
+    "name": "Alfredos Events Place",
+    "address": "WR9R+CQV", 
+    "city": "Pulilan",
+    "state": "Bulacan",
+    "zip": "Philippines",
+    "time": "3:30 PM",
+    "details": "Schedule: 3:30 PM to 7:30 PM",
+    "landmark": "",
+    "googleMapsUrl": "https://maps.app.goo.gl/K5U1RPA6QkfqegNa6?g_st=ipc",
+    "directionsUrl": "https://maps.app.goo.gl/K5U1RPA6QkfqegNa6?g_st=ipc"
+  }
+} 

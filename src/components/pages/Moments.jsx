@@ -1,0 +1,821 @@
+import React, { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { createPortal } from 'react-dom'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
+import { loveStory } from '../../data'
+import { useAudio } from '../../contexts/AudioContext'
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger)
+
+const Moments = () => {
+  const navigate = useNavigate()
+  const { pause, play, isPlaying, audioRef } = useAudio()
+  const sectionRef = useRef(null)
+  const backButtonRef = useRef(null)
+  const polaroidScrollRef = useRef(null)
+  const threePhotosScrollRef = useRef(null)
+  const titleRef = useRef(null)
+  const firstParagraphRef = useRef(null)
+  const secondParagraphRef = useRef(null)
+  const textBeforeImagesRef = useRef(null)
+  const polaroidContainerRef = useRef(null)
+  const thirdParagraphRef = useRef(null)
+  const ferl1949Ref = useRef(null)
+  const fourthParagraphRef = useRef(null)
+  const threePhotosRowRef = useRef(null)
+  const momentsTitleRef = useRef(null)
+  const momentsGridRef = useRef(null)
+  const pImagesGridRef = useRef(null)
+  const galleryScrollContainerRef = useRef(null)
+  const galleryImagesRef = useRef(null)
+  const endPhoto4Ref = useRef(null)
+  const ry211ImageRef = useRef(null)
+  const photo2013Ref = useRef(null)
+  const [selectedImage, setSelectedImage] = useState(null)
+  const [selectedImageIndex, setSelectedImageIndex] = useState(null)
+  const [isVideoOpen, setIsVideoOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768)
+  const videoModalRef = useRef(null)
+  const wasPlayingBeforeVideo = useRef(false)
+  const [isDragging, setIsDragging] = useState(false)
+  const [startX, setStartX] = useState(0)
+  const [scrollLeft, setScrollLeft] = useState(0)
+  const [isDraggingThreePhotos, setIsDraggingThreePhotos] = useState(false)
+  const [startXThreePhotos, setStartXThreePhotos] = useState(0)
+  const [scrollLeftThreePhotos, setScrollLeftThreePhotos] = useState(0)
+
+  // All prenup images
+  const allPrenupImages = [
+    '/assets/images/prenup/APA_0744.JPG',
+    '/assets/images/prenup/APA_0809.JPG',
+    '/assets/images/prenup/APA_0812.JPG',
+    '/assets/images/prenup/APA_0851.JPG',
+    '/assets/images/prenup/APA_0868.JPG',
+    '/assets/images/prenup/APA_0871.JPG',
+    '/assets/images/prenup/APA_0880.JPG',
+    '/assets/images/prenup/APA_0891.JPG',
+    '/assets/images/prenup/APA_0914.JPG',
+    '/assets/images/prenup/APA_0947.JPG',
+    '/assets/images/prenup/APA_0970.JPG',
+    '/assets/images/prenup/APA_0977.JPG',
+    '/assets/images/prenup/APA_0998.JPG',
+    '/assets/images/prenup/DSC02736.JPG',
+    '/assets/images/prenup/DSC02739.JPG',
+    '/assets/images/prenup/DSC02749.JPG',
+    '/assets/images/prenup/DSC02761.JPG',
+    '/assets/images/prenup/DSC02775.JPG',
+    '/assets/images/prenup/DSC02798.JPG',
+    '/assets/images/prenup/DSC02804.JPG',
+    '/assets/images/prenup/APA_0759.JPG',
+    '/assets/images/prenup/APA_0788.JPG'
+  ]
+
+  // Images array for the lightbox (includes all images in same order)
+  const lightboxImages = [
+    '/assets/images/prenup/APA_0744.JPG',
+    '/assets/images/prenup/APA_0809.JPG',
+    '/assets/images/prenup/APA_0812.JPG',
+    '/assets/images/prenup/APA_0851.JPG',
+    '/assets/images/prenup/APA_0868.JPG',
+    '/assets/images/prenup/APA_0871.JPG',
+    '/assets/images/prenup/APA_0880.JPG',
+    '/assets/images/prenup/APA_0891.JPG',
+    '/assets/images/prenup/APA_0914.JPG',
+    '/assets/images/prenup/APA_0947.JPG',
+    '/assets/images/prenup/APA_0970.JPG',
+    '/assets/images/prenup/APA_0977.JPG',
+    '/assets/images/prenup/APA_0998.JPG',
+    '/assets/images/prenup/DSC02736.JPG',
+    '/assets/images/prenup/DSC02739.JPG',
+    '/assets/images/prenup/DSC02749.JPG',
+    '/assets/images/prenup/DSC02761.JPG',
+    '/assets/images/prenup/DSC02775.JPG',
+    '/assets/images/prenup/DSC02798.JPG',
+    '/assets/images/prenup/DSC02804.JPG',
+    '/assets/images/prenup/APA_0759.JPG',
+    '/assets/images/prenup/APA_0788.JPG'
+  ]
+
+  // Gallery images for horizontal scroll (all unused images + top and bottom from love story)
+  const galleryImages = [
+    '/assets/images/prenup/APA_0744.JPG',
+    '/assets/images/prenup/APA_0809.JPG',
+    '/assets/images/prenup/APA_0812.JPG',
+    '/assets/images/prenup/APA_0851.JPG',
+    '/assets/images/prenup/APA_0868.JPG',
+    '/assets/images/prenup/APA_0871.JPG',
+    '/assets/images/prenup/APA_0880.JPG',
+    '/assets/images/prenup/APA_0891.JPG',
+    '/assets/images/prenup/APA_0914.JPG',
+    '/assets/images/prenup/APA_0947.JPG',
+    '/assets/images/prenup/APA_0970.JPG',
+    '/assets/images/prenup/APA_0977.JPG',
+    '/assets/images/prenup/APA_0998.JPG',
+    '/assets/images/prenup/DSC02736.JPG',
+    '/assets/images/prenup/DSC02739.JPG',
+    '/assets/images/prenup/DSC02749.JPG',
+    '/assets/images/prenup/DSC02761.JPG',
+    '/assets/images/prenup/DSC02775.JPG',
+    '/assets/images/prenup/DSC02798.JPG',
+    '/assets/images/prenup/DSC02804.JPG',
+    '/assets/images/prenup/APA_0788.JPG'
+  ]
+
+  // Polaroid images for the scrollable container
+  const polaroidImages = [
+    { src: '/assets/images/prenup/P1.jpg', rotation: -5, index: 3 },
+    { src: '/assets/images/prenup/P2.jpg', rotation: 5, index: 4 },
+    { src: '/assets/images/prenup/P3.jpg', rotation: -3, index: 5 },
+    { src: '/assets/images/prenup/P4.jpg', rotation: 3, index: 6 },
+    { src: '/assets/images/prenup/P5.jpg', rotation: -4, index: 7 },
+    { src: '/assets/images/prenup/P6.jpg', rotation: 2, index: 8 }
+  ]
+
+  useEffect(() => {
+    // Set initial hidden states to prevent glimpse
+    if (sectionRef.current) {
+      gsap.set(sectionRef.current, { x: '100%', opacity: 0 })
+    }
+    if (backButtonRef.current) {
+      gsap.set(backButtonRef.current, { opacity: 0, scale: 0 })
+    }
+    
+    // Page slide-in animation on mount
+    if (sectionRef.current) {
+      gsap.fromTo(sectionRef.current,
+        { x: '100%', opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+      )
+    }
+
+    // Back button fade-in animation after page slides in
+    if (backButtonRef.current) {
+      gsap.fromTo(backButtonRef.current,
+        { opacity: 0, scale: 0 },
+        { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.7)", delay: 0.6 }
+      )
+    }
+
+    // Our Story title animation on load
+    if (titleRef.current) {
+      gsap.fromTo(titleRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.7 }
+      )
+    }
+
+    // First paragraph animation on load
+    if (firstParagraphRef.current) {
+      gsap.fromTo(firstParagraphRef.current,
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.9 }
+      )
+    }
+
+    // Scroll to center the 2nd photo on load
+    if (polaroidScrollRef.current) {
+      setTimeout(() => {
+        const container = polaroidScrollRef.current
+        if (container) {
+          const scrollWidth = container.scrollWidth
+          const clientWidth = container.clientWidth
+          // Center the 2nd photo (index 1)
+          // Each photo is 200px wide + 16px gap (gap-4)
+          const photoWidth = 200
+          const gap = 16
+          const secondPhotoIndex = 1
+          // Calculate the position of the 2nd photo's center
+          const secondPhotoCenter = (secondPhotoIndex * (photoWidth + gap)) + (photoWidth / 2)
+          // Scroll to center the photo in the viewport
+          const scrollPosition = secondPhotoCenter - (clientWidth / 2)
+          container.scrollTo({
+            left: Math.max(0, Math.min(scrollPosition, scrollWidth - clientWidth)),
+            behavior: 'smooth'
+          })
+        }
+      }, 800) // Delay to allow page animation to complete
+    }
+
+    // Scroll animations for elements
+    const scrollElements = [
+      { ref: secondParagraphRef },
+      { ref: textBeforeImagesRef },
+      { ref: polaroidContainerRef },
+      { ref: thirdParagraphRef },
+      { ref: ferl1949Ref },
+      { ref: fourthParagraphRef },
+      { ref: threePhotosRowRef },
+      { ref: photo2013Ref },
+      { ref: momentsTitleRef },
+      { ref: momentsGridRef },
+      { ref: pImagesGridRef }
+    ]
+
+    scrollElements.forEach(({ ref }) => {
+      if (ref.current) {
+        gsap.fromTo(
+          ref.current,
+          {
+            opacity: 0,
+            y: 50
+          },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ref.current,
+              start: "top 85%",
+              end: "top 50%",
+              toggleActions: "play none none none"
+            }
+          }
+        )
+      }
+    })
+
+
+    // Gallery animations
+    if (momentsGridRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: momentsGridRef.current,
+          start: "top 50%",
+          end: "bottom 20%",
+          toggleActions: "play none none reverse"
+        }
+      })
+
+      // Animate Gallery heading
+      if (momentsTitleRef.current) {
+        tl.fromTo(momentsTitleRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+        )
+      }
+
+      // Animate gallery images container - slide from right
+      if (galleryImagesRef.current) {
+        tl.fromTo(galleryImagesRef.current,
+          { opacity: 0, x: 100 },
+          { opacity: 1, x: 0, duration: 0.8, ease: "power2.out" },
+          "-=0.2"
+        )
+      }
+    }
+
+    // Scroll animation for R&Y-209 photo after gallery
+    if (endPhoto4Ref.current) {
+      gsap.fromTo(
+        endPhoto4Ref.current,
+        {
+          opacity: 0,
+          y: 50
+        },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: endPhoto4Ref.current,
+            start: "top 85%",
+            end: "top 50%",
+            toggleActions: "play none none none"
+          }
+        }
+      )
+    }
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
+
+  // Function to handle video modal open
+  const handleVideoOpen = () => {
+    // Pause background music when video opens - check actual audio state
+    if (audioRef.current && !audioRef.current.paused) {
+      wasPlayingBeforeVideo.current = true
+      pause()
+    } else {
+      wasPlayingBeforeVideo.current = false
+    }
+    
+    setIsVideoOpen(true)
+  }
+
+  // Function to handle video modal close
+  const handleVideoClose = () => {
+    setIsVideoOpen(false)
+    
+    // Resume music when video closes (if it was playing before)
+    if (wasPlayingBeforeVideo.current) {
+      setTimeout(() => {
+        if (audioRef.current) {
+          audioRef.current.play().catch(error => {
+            console.log('Could not resume music:', error)
+          })
+        }
+        wasPlayingBeforeVideo.current = false
+      }, 300)
+    }
+  }
+
+  // Gallery drag handlers
+  const handleGalleryMouseDown = (e) => {
+    if (!galleryScrollContainerRef.current) return
+    setIsDragging(true)
+    setStartX(e.pageX - galleryScrollContainerRef.current.offsetLeft)
+    setScrollLeft(galleryScrollContainerRef.current.scrollLeft)
+    galleryScrollContainerRef.current.style.cursor = 'grabbing'
+    galleryScrollContainerRef.current.style.userSelect = 'none'
+  }
+
+  const handleGalleryMouseLeave = () => {
+    setIsDragging(false)
+    if (galleryScrollContainerRef.current) {
+      galleryScrollContainerRef.current.style.cursor = 'grab'
+      galleryScrollContainerRef.current.style.userSelect = 'auto'
+    }
+  }
+
+  const handleGalleryMouseUp = () => {
+    setIsDragging(false)
+    if (galleryScrollContainerRef.current) {
+      galleryScrollContainerRef.current.style.cursor = 'grab'
+      galleryScrollContainerRef.current.style.userSelect = 'auto'
+    }
+  }
+
+  const handleGalleryMouseMove = (e) => {
+    if (!isDragging || !galleryScrollContainerRef.current) return
+    e.preventDefault()
+    const x = e.pageX - galleryScrollContainerRef.current.offsetLeft
+    const walk = (x - startX) * 2
+    galleryScrollContainerRef.current.scrollLeft = scrollLeft - walk
+  }
+
+  // Touch events for mobile
+  const handleGalleryTouchStart = (e) => {
+    if (!galleryScrollContainerRef.current) return
+    setIsDragging(true)
+    setStartX(e.touches[0].pageX - galleryScrollContainerRef.current.offsetLeft)
+    setScrollLeft(galleryScrollContainerRef.current.scrollLeft)
+  }
+
+  const handleGalleryTouchMove = (e) => {
+    if (!isDragging || !galleryScrollContainerRef.current) return
+    const x = e.touches[0].pageX - galleryScrollContainerRef.current.offsetLeft
+    const walk = (x - startX) * 2
+    galleryScrollContainerRef.current.scrollLeft = scrollLeft - walk
+  }
+
+  const handleGalleryTouchEnd = () => {
+    setIsDragging(false)
+  }
+
+  // Gallery image click handler
+  const handleGalleryImageClick = (image, index) => {
+    setSelectedImage(image)
+    setSelectedImageIndex(index)
+  }
+
+  // Gallery lightbox navigation
+  const handleGalleryPrevious = () => {
+    if (selectedImageIndex !== null && selectedImageIndex > 0) {
+      const newIndex = selectedImageIndex - 1
+      setSelectedImage(lightboxImages[newIndex])
+      setSelectedImageIndex(newIndex)
+    }
+  }
+
+  const handleGalleryNext = () => {
+    if (selectedImageIndex !== null && selectedImageIndex < lightboxImages.length - 1) {
+      const newIndex = selectedImageIndex + 1
+      setSelectedImage(lightboxImages[newIndex])
+      setSelectedImageIndex(newIndex)
+    }
+  }
+
+  const handleGalleryClose = () => {
+    setSelectedImage(null)
+    setSelectedImageIndex(null)
+  }
+
+  // Track screen size
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+    
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
+  // Apply object-position to R&Y-211 image on desktop
+  useEffect(() => {
+    if (ry211ImageRef.current && !isMobile) {
+      ry211ImageRef.current.style.objectPosition = '15% center'
+    } else if (ry211ImageRef.current && isMobile) {
+      ry211ImageRef.current.style.objectPosition = 'center center'
+    }
+  }, [isMobile])
+
+  // Video modal rotation animation (only on screens smaller than 768px)
+  useEffect(() => {
+    if (isVideoOpen && videoModalRef.current) {
+      // Set initial state
+      gsap.set(videoModalRef.current, {
+        rotation: 0,
+        scale: 0.8,
+        opacity: 0
+      })
+      
+      // Animate to landscape (only on mobile)
+      gsap.to(videoModalRef.current, {
+        rotation: isMobile ? 90 : 0,
+        scale: 1,
+        opacity: 1,
+        duration: 0.5,
+        ease: "power2.out"
+      })
+    }
+  }, [isVideoOpen, isMobile])
+
+  return (
+    <>
+      <section
+        ref={sectionRef}
+        id="moments"
+        data-section="moments"
+        className="relative w-full overflow-hidden min-h-screen"
+        style={{ opacity: 0, transform: 'translateX(100%)' }}
+      >
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'url(/assets/images/graphics/textured-bg-2.png)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat'
+          }}
+        />
+        
+        {/* Index Image at Top */}
+        <div className="relative z-20 w-full flex flex-col items-center">
+          <div className="relative w-screen group cursor-pointer" onClick={handleVideoOpen}>
+            <img 
+              src="/assets/images/prenup/APA_0744.JPG" 
+              alt="Index image" 
+              className="w-full h-auto object-cover"
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
+            {/* Subtle Play Button Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/10 transition-colors duration-300">
+              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/40 hover:bg-white/60 rounded-full flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105 opacity-70 group-hover:opacity-100">
+                <Play className="w-6 h-6 sm:w-7 sm:h-7 text-white/90 ml-0.5" fill="rgba(255, 255, 255, 0.9)" />
+              </div>
+            </div>
+          </div>
+          
+          {/* Our Story Title */}
+          <div ref={titleRef} className="w-full max-w-4xl text-center pt-12 pb-6 px-4">
+            <span className="nanum-myeongjo-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl inline-block" style={{ color: '#191970' }}>OUR</span>
+            <span 
+              className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block ml-2" 
+              style={{ 
+                lineHeight: '1.2',
+                color: '#006666',
+                display: 'inline-block',
+                paddingTop: '0.5rem',
+                paddingBottom: '0.5rem'
+              }}
+            >
+              Story
+            </span>
+          </div>
+          
+          {/* First Paragraph */}
+          {/* Love Story */}
+            <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-4">
+              <p className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
+              Love story goes here
+            </p>
+           </div>
+
+           {/* Third Paragraph */}
+
+           {/* FERL1949 Photo */}
+           <div ref={ferl1949Ref} className="relative z-20 w-full max-w-2xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 flex justify-center">
+             <img
+               src="/assets/images/prenup/APA_0759.JPG"
+               alt="Love story photo"
+               className="w-full h-auto object-cover cursor-pointer"
+               loading="lazy"
+               decoding="async"
+               onClick={() => {
+                 setSelectedImage('/assets/images/prenup/APA_0759.JPG')
+                 setSelectedImageIndex(lightboxImages.indexOf('/assets/images/prenup/APA_0759.JPG'))
+               }}
+             />
+           </div>
+
+
+           {/* FERL2103 Photo */}
+           <div ref={photo2013Ref} className="relative z-20 w-full max-w-2xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 flex justify-center mx-auto">
+             <img
+               src="/assets/images/prenup/APA_0809.JPG"
+               alt="2013 Photo"
+               className="w-full h-auto object-cover cursor-pointer"
+               loading="lazy"
+               decoding="async"
+               onClick={() => {
+                 setSelectedImage('/assets/images/prenup/APA_0809.JPG')
+                 setSelectedImageIndex(lightboxImages.indexOf('/assets/images/prenup/APA_0809.JPG'))
+               }}
+             />
+           </div>
+
+           {/* Moments Gallery Section */}
+           <div 
+             ref={momentsGridRef} 
+             className="relative z-20 w-full flex flex-col mt-8"
+             style={{
+               backgroundColor: '#f4f5ef'
+             }}
+           >
+             {/* Title - Full Width at Top */}
+             <div className="relative z-20 w-full" style={{ border: 'none' }}>
+               <h2 ref={momentsTitleRef} className="w-full text-center px-4" style={{
+                 backgroundImage: 'url(/assets/images/graphics/teal-2.png)',
+                     backgroundSize: 'cover',
+                 backgroundPosition: 'center',
+                 backgroundRepeat: 'no-repeat',
+                 color: '#f5f5f0',
+                 paddingTop: '4rem',
+                 paddingBottom: '4rem',
+                 overflow: 'visible',
+                 border: 'none',
+                 outline: 'none'
+               }}>
+                 {/* Gold-1 Graphic Above Title */}
+                 <div className="flex justify-center items-center w-full mb-4">
+                   <img 
+                     src="/assets/images/graphics/gold-1.png" 
+                     alt="Decorative graphic" 
+                     className="h-auto"
+                     style={{ maxWidth: '120px', width: 'auto' }}
+                 />
+               </div>
+                 <span 
+                   className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block" 
+                   style={{
+                     lineHeight: '1.2',
+                     background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 25%, #FFD700 50%, #B8860B 75%, #DAA520 100%)',
+                     WebkitBackgroundClip: 'text',
+                     WebkitTextFillColor: 'transparent',
+                     backgroundClip: 'text',
+                     filter: 'drop-shadow(0 2px 4px rgba(218, 165, 32, 0.3))',
+                     display: 'inline-block',
+                     paddingTop: '0.5rem',
+                     paddingBottom: '0.5rem'
+                   }}
+                 >
+                   Moments
+                 </span>
+               </h2>
+               </div>
+
+             {/* Content Container */}
+             <div 
+               className="w-full flex flex-col relative z-10"
+                   style={{
+                 backgroundImage: 'url(/assets/images/graphics/teal-2.png)',
+                 backgroundSize: '100% 50%',
+                 backgroundPosition: 'top center',
+                 backgroundRepeat: 'no-repeat',
+                 backgroundColor: '#f4f5ef'
+               }}
+             >
+               {/* Horizontal Scrollable Images */}
+               <div 
+                 ref={galleryImagesRef}
+                 className="w-full"
+               >
+                 <div 
+                   ref={galleryScrollContainerRef}
+                   className="w-full overflow-x-auto"
+                   style={{
+                     scrollbarWidth: 'none',
+                     msOverflowStyle: 'none',
+                     cursor: 'grab'
+                   }}
+                   onMouseDown={handleGalleryMouseDown}
+                   onMouseLeave={handleGalleryMouseLeave}
+                   onMouseUp={handleGalleryMouseUp}
+                   onMouseMove={handleGalleryMouseMove}
+                   onTouchStart={handleGalleryTouchStart}
+                   onTouchMove={handleGalleryTouchMove}
+                   onTouchEnd={handleGalleryTouchEnd}
+                 >
+                   <style>{`
+                     div::-webkit-scrollbar {
+                       display: none;
+                     }
+                   `}</style>
+                   <div className="flex gap-4 px-4" style={{ minHeight: '300px' }}>
+                     {galleryImages.map((image, index) => (
+                       <img
+                         key={index}
+                         src={image}
+                         alt={`Gallery ${index + 1}`}
+                         className="flex-shrink-0 object-cover cursor-pointer"
+                         style={{
+                           width: '300px',
+                           height: '300px',
+                           borderRadius: '8px'
+                         }}
+                         width="300"
+                         height="300"
+                         draggable="false"
+                         loading={index < 4 ? "eager" : "lazy"}
+                         fetchPriority={index < 4 ? "high" : index < 8 ? "auto" : "low"}
+                         decoding="async"
+                         onClick={() => {
+                           const imageIndex = lightboxImages.indexOf(image)
+                           handleGalleryImageClick(image, imageIndex)
+                         }}
+                       />
+                     ))}
+               </div>
+                 </div>
+               </div>
+             </div>
+
+             {/* Image Slider Graphic - Bottom Right */}
+             <img
+               src="/assets/images/graphics/image-slider.png"
+               alt="Image slider decoration"
+               className="absolute bottom-0 right-0 w-32 sm:w-40 md:w-48 opacity-50"
+               style={{ zIndex: 1 }}
+               loading="lazy"
+               decoding="async"
+             />
+           </div>
+
+           {/* R&Y-209 Photo - Full Width After Gallery */}
+           <div ref={endPhoto4Ref} className="relative z-20 w-screen mt-8">
+             <div className="relative">
+               <img
+                 src="/assets/images/prenup/APA_0788.JPG"
+                 alt="Love story photo"
+                 className="w-full h-auto object-cover cursor-pointer"
+                 loading="lazy"
+                 decoding="async"
+                 onClick={() => {
+                   setSelectedImage('/assets/images/prenup/APA_0788.JPG')
+                   setSelectedImageIndex(lightboxImages.indexOf('/assets/images/prenup/APA_0788.JPG'))
+                 }}
+               />
+               {/* Love Quote Overlay */}
+               <div className="hidden md:block absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl z-10">
+                 <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-albert font-bold leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>
+                   "<span className="imperial-script-regular text-4xl sm:text-5xl md:text-6xl lg:text-7xl inline-block">A</span>fter every 'no', there's a 'YES' waiting.<br />
+                   You just have to be consistent enough to find it."
+                 </p>
+               </div>
+             </div>
+           </div>
+
+
+         </div>
+       </section>
+      
+      {/* Back Button - Circular, Bottom Right - Outside section to avoid transform issues */}
+      <button
+        ref={backButtonRef}
+        onClick={() => {
+          // Slide out page to the left before navigating
+          if (sectionRef.current) {
+            gsap.to(sectionRef.current, {
+              x: '-100%',
+              opacity: 0,
+              duration: 0.5,
+              ease: "power2.in",
+              onComplete: () => {
+                navigate('/')
+              }
+            })
+          } else {
+            navigate('/')
+          }
+        }}
+        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#191970] text-white rounded-full shadow-lg hover:bg-[#191970]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+        aria-label="Back to home"
+        style={{ pointerEvents: 'auto' }}
+      >
+        <ArrowLeft className="w-6 h-6 group-hover:-translate-x-1 transition-transform duration-300" />
+      </button>
+
+      {/* Video Modal */}
+      {isVideoOpen && createPortal(
+        <div 
+          className="fixed inset-0 z-[200] flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          onClick={(e) => {
+            // Close when clicking the backdrop
+            if (e.target === e.currentTarget) {
+              handleVideoClose()
+            }
+          }}
+        >
+          {/* Close Button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              handleVideoClose()
+            }}
+            className="absolute top-4 right-4 z-[300] w-10 h-10 bg-white/20 hover:bg-white/30 rounded-full flex items-center justify-center transition-colors duration-200"
+            style={{ pointerEvents: 'auto' }}
+          >
+            <X className="w-6 h-6 text-white" />
+          </button>
+
+          {/* To Be Added Message */}
+          <div className="relative z-10 p-6">
+            <div className="w-full h-[600px] flex items-center justify-center rounded-lg bg-gray-100 text-gray-600 text-2xl font-bold">
+              To Be Added
+            </div>
+          </div>
+        </div>,
+        document.body
+      )}
+
+      {/* Image Lightbox Modal */}
+      {selectedImage && createPortal(
+        <div
+          className="fixed inset-0 z-[10000] flex items-center justify-center"
+          onClick={handleGalleryClose}
+        >
+          {/* Close Icon - Top Left */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation()
+              handleGalleryClose()
+            }}
+            className="absolute top-4 left-4 z-10 p-2 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
+          >
+            <X className="w-6 h-6 text-white" />
+          </button>
+
+          {/* Previous Button - Left */}
+          {selectedImageIndex !== null && selectedImageIndex > 0 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                handleGalleryPrevious()
+              }}
+              className="absolute left-4 top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
+            >
+              <ChevronLeft className="w-8 h-8 text-white" />
+            </button>
+          )}
+
+          {/* Next Button - Right */}
+          {selectedImageIndex !== null && selectedImageIndex < lightboxImages.length - 1 && (
+            <button
+              onClick={(e) => {
+                e.stopPropagation()
+                handleGalleryNext()
+              }}
+              className="absolute right-4 top-1/2 transform -translate-y-1/2 z-10 p-3 rounded-full bg-white/10 hover:bg-white/20 transition-colors duration-200"
+            >
+              <ChevronRight className="w-8 h-8 text-white" />
+            </button>
+          )}
+
+          {/* Full Image */}
+          <img
+            src={selectedImage}
+            alt="Gallery full view"
+            className="max-w-[90vw] max-h-[90vh] object-contain"
+            loading="eager"
+            decoding="async"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>,
+        document.body
+      )}
+    </>
+  )
+}
+
+export default Moments

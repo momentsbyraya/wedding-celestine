@@ -1,0 +1,319 @@
+import React, { useEffect, useRef, useState, useMemo } from 'react'
+import { gsap } from 'gsap'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { MapPin, ChevronLeft, ChevronRight } from 'lucide-react'
+import { themeConfig } from '../config/themeConfig'
+import { venues as venuesData, images } from '../data'
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger)
+
+const MapDirections = () => {
+  const sectionRef = useRef(null)
+  const titleRef = useRef(null)
+  const headerRef = useRef(null)
+  const headerContentRef = useRef(null)
+  const venueRef = useRef(null)
+  const venueContainerRef = useRef(null)
+  const [currentVenueIndex, setCurrentVenueIndex] = useState(0)
+  const [isTransitioning, setIsTransitioning] = useState(false)
+
+  // Random background position, rotation, and flip - Base layer (old-book-2)
+  const bgStyleBase = useMemo(() => {
+    const posX = Math.random() * 100 // 0% to 100%
+    const posY = Math.random() * 100 // 0% to 100%
+    const rotation = (Math.random() * 360) - 180 // -180 to 180 degrees
+    const flipX = Math.random() > 0.5 ? -1 : 1 // Random horizontal flip
+    const flipY = Math.random() > 0.5 ? -1 : 1 // Random vertical flip
+    return {
+      backgroundImage: 'url(/assets/images/graphics/old-book-2.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: `${posX}% ${posY}%`,
+      transform: `rotate(${rotation}deg) scaleX(${flipX}) scaleY(${flipY})`,
+      opacity: 0.75
+    }
+  }, [])
+
+  // Random background position, rotation, and flip - Top layer (old-book-bg)
+  const bgStyle = useMemo(() => {
+    const posX = Math.random() * 100 // 0% to 100%
+    const posY = Math.random() * 100 // 0% to 100%
+    const rotation = (Math.random() * 360) - 180 // -180 to 180 degrees
+    const flipX = Math.random() > 0.5 ? -1 : 1 // Random horizontal flip
+    const flipY = Math.random() > 0.5 ? -1 : 1 // Random vertical flip
+    return {
+      backgroundImage: 'url(/assets/images/graphics/old-book-bg.png)',
+      backgroundSize: 'cover',
+      backgroundPosition: `${posX}% ${posY}%`,
+      transform: `rotate(${rotation}deg) scaleX(${flipX}) scaleY(${flipY})`,
+      opacity: 0.5
+    }
+  }, [])
+
+  useEffect(() => {
+    // Scroll-triggered animations for individual elements
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 50%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse"
+      }
+    })
+
+    // Title animation first
+    if (titleRef.current) {
+      tl.fromTo(titleRef.current, 
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+      )
+    }
+
+    // Header (heading) animation
+    tl.fromTo(headerRef.current, 
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.4"
+    )
+
+    // Header content (description and graphics) animation
+    tl.fromTo(headerContentRef.current, 
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.4"
+    )
+
+    // Venue section animation
+    tl.fromTo(venueRef.current, 
+      { opacity: 0, y: 30 },
+      { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
+      "-=0.4"
+    )
+
+    // Cleanup function
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill())
+    }
+  }, [])
+
+
+  const venues = [
+    {
+      ...venuesData.ceremony,
+      type: 'Ceremony',
+      image: images.venues.church
+    },
+    {
+      ...venuesData.reception,
+      type: 'Reception',
+      image: images.venues.reception
+    }
+  ]
+
+  const currentVenue = venues[currentVenueIndex]
+
+  const nextVenue = () => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    
+    // Fade out current venue
+    setTimeout(() => {
+      setCurrentVenueIndex((prev) => (prev + 1) % venues.length)
+      // Fade in new venue
+      setTimeout(() => {
+        setIsTransitioning(false)
+      }, 50)
+    }, 300)
+  }
+
+  const prevVenue = () => {
+    if (isTransitioning) return
+    setIsTransitioning(true)
+    
+    // Fade out current venue
+    setTimeout(() => {
+      setCurrentVenueIndex((prev) => (prev - 1 + venues.length) % venues.length)
+      // Fade in new venue
+      setTimeout(() => {
+        setIsTransitioning(false)
+      }, 50)
+    }, 300)
+  }
+
+  return (
+    <section
+      ref={sectionRef}
+      id="map"
+      className="relative py-20 w-full overflow-hidden"
+    >
+      {/* Background Image with reduced opacity */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: 'url(/assets/images/graphics/calligraphy-bg.png)',
+          opacity: 0.15
+        }}
+      />
+      
+      {/* Soft white gradient overlays for transitions */}
+      <div className="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white/60 to-transparent pointer-events-none z-10" />
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white/60 to-transparent pointer-events-none z-10" />
+      
+      {/* Title Section */}
+      <div ref={titleRef} className="relative z-30 w-full py-8 sm:py-12" style={{
+        backgroundImage: 'url(/assets/images/graphics/textured-bg-1.png)',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat'
+      }}>
+        <div className="text-center">
+          <h1 className="mb-3 relative inline-block px-6 py-3" style={{ color: '#f5f5f0' }}>
+            <span className="nanum-myeongjo-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl inline-block">THE</span>
+            <br />
+            <span className="imperial-script-regular text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none" style={{ lineHeight: '0.8' }}>Venue</span>
+          </h1>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-20 flex items-center justify-center py-12">
+        <div className="max-w-xs sm:max-w-md lg:max-w-xl w-full mx-auto px-8 sm:px-12 md:px-8 lg:px-16">
+          {/* Header Section */}
+          <div className="text-center">
+            <h2 ref={headerRef} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-[#333333] mb-3 font-caribbean">
+              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none" style={{ lineHeight: '0.8' }}>L</span>
+              <span className="inline-block">ocation</span>
+            </h2>
+            <div ref={headerContentRef}>
+              <p className="text-base sm:text-lg font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed">
+                We will be waiting for you at the address
+              </p>
+              <div className="flex justify-center items-center">
+                {/* Left horizontal line */}
+                <div className="w-16 h-px bg-[#333333] opacity-40"></div>
+                
+                <img 
+                  src="/assets/images/graphics/graphics-1.svg" 
+                  alt="Decorative graphic" 
+                  className="w-32 sm:w-40 md:w-48 h-auto mx-4"
+                />
+                
+                {/* Right horizontal line */}
+                <div className="w-16 h-px bg-[#333333] opacity-40"></div>
+              </div>
+            </div>
+          </div>
+
+          {/* Venue Information */}
+          <div className="relative overflow-visible" ref={venueContainerRef}>
+            {/* Previous Venue Button */}
+            {venues.length > 1 && (
+              <button
+                onClick={prevVenue}
+                disabled={isTransitioning}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Previous venue"
+              >
+                <ChevronLeft className="w-6 h-6 text-[#333333]" />
+              </button>
+            )}
+
+            {/* Venue Container with Fade Effect */}
+            <div className="relative overflow-hidden min-h-[400px]">
+              <div 
+                ref={venueRef} 
+                key={currentVenueIndex}
+                className="text-center transition-opacity duration-500 ease-in-out"
+                style={{
+                  opacity: isTransitioning ? 0 : 1
+                }}
+              >
+                <div className="text-2xl sm:text-3xl md:text-4xl alice-regular text-[#333333] mb-2">
+                  {currentVenue.name}
+                </div>
+                <p className="text-base sm:text-lg font-albert font-thin text-[#333333] mb-3 max-w-md mx-auto">
+                  {currentVenue.address && `${currentVenue.address}, `}
+                  {currentVenue.city}
+                  {currentVenue.state && `, ${currentVenue.state}`}
+                  {currentVenue.zip && ` ${currentVenue.zip}`}
+                </p>
+                {currentVenue.landmark && (
+                  <p className="text-sm sm:text-base font-albert font-thin text-[#333333] mb-3 max-w-md mx-auto">
+                    Nearest Landmark: {currentVenue.landmark}
+                  </p>
+                )}
+                {currentVenue.time && (
+                  <p className="text-base sm:text-lg font-albert font-thin text-[#333333] mb-3 max-w-md mx-auto">
+                    Time: {currentVenue.time}
+                  </p>
+                )}
+                <div className="flex justify-center mb-4">
+                  <a
+                    href={currentVenue.googleMapsUrl || currentVenue.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="cursor-pointer hover:opacity-80 transition-opacity duration-300"
+                  >
+                    <img 
+                      src={currentVenue.image} 
+                      alt={currentVenue.name} 
+                      className="w-full max-w-md h-auto"
+                    />
+                  </a>
+                </div>
+                <div className="flex justify-center items-center">
+                  {/* Left horizontal line */}
+                  <div className="w-4 h-px bg-[#333333] opacity-40"></div>
+                  
+                  <a
+                    href={currentVenue.googleMapsUrl || currentVenue.directionsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center hover:opacity-80 transition-all duration-300 group px-4 pb-2 pt-0"
+                    style={{ 
+                      borderRadius: '25px'
+                    }}
+                  >
+                    <MapPin className="w-4 h-4 sm:w-5 sm:h-5 md:w-6 md:h-6 text-[#333333] opacity-80 flex-shrink-0" />
+                  </a>
+                  
+                  {/* Right horizontal line */}
+                  <div className="w-4 h-px bg-[#333333] opacity-40"></div>
+                </div>
+                
+                {/* Duplicated SVG with horizontal lines, flipped vertically */}
+                <div className="flex justify-center items-center mt-6">
+                  {/* Left horizontal line */}
+                  <div className="w-16 h-px bg-[#333333] opacity-40"></div>
+                  
+                  <img 
+                    src="/assets/images/graphics/graphics-1.svg" 
+                    alt="Decorative graphic" 
+                    className="w-32 sm:w-40 md:w-48 h-auto mx-4 scale-y-[-1]"
+                  />
+                  
+                  {/* Right horizontal line */}
+                  <div className="w-16 h-px bg-[#333333] opacity-40"></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Next Venue Button */}
+            {venues.length > 1 && (
+              <button
+                onClick={nextVenue}
+                disabled={isTransitioning}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 bg-white/80 hover:bg-white rounded-full p-2 shadow-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                aria-label="Next venue"
+              >
+                <ChevronRight className="w-6 h-6 text-[#333333]" />
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+export default MapDirections 

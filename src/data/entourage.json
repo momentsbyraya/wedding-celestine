@@ -1,0 +1,94 @@
+{
+  "couple": {
+    "groom": {
+      "name": "Gil Carlos T. Santiago"
+    },
+    "bride": {
+      "name": "Praise Joy D. Rita"
+    }
+  },
+  "parents": {
+    "groom": {
+      "father": "Roberto Santiago",
+      "mother": "Maria Santiago"
+    },
+    "bride": {
+      "father": "Antonio Rita",
+      "mother": "Carmen Rita"
+    }
+  },
+  "entourageList": [
+    {
+      "category": "Principal Sponsors",
+      "ninong": [
+        "Michael Torres",
+        "David Reyes",
+        "James Martinez",
+        "Robert Garcia",
+        "Daniel Cruz",
+        "Mark Lopez",
+        "John Santos",
+        "Paul Rodriguez",
+        "Christopher Tan",
+        "Andrew Lim"
+      ],
+      "ninang": [
+        "Sarah Mendoza",
+        "Jennifer Dela Cruz",
+        "Maria Fernandez",
+        "Anna Villanueva",
+        "Grace Ramos",
+        "Patricia Bautista",
+        "Lisa Morales",
+        "Michelle Castro",
+        "Rachel Ong",
+        "Karen Lee"
+      ]
+    },
+    {
+      "category": "Secondary Sponsors",
+      "groomsmen": [
+        "Ryan Alcantara",
+        "Kevin Mendoza",
+        "Brian Santos",
+        "Jason Tan",
+        "Justin Lim",
+        "Eric Chua",
+        "Steven Yu"
+      ],
+      "bridesmaid": [
+        "Nicole Garcia",
+        "Stephanie Reyes",
+        "Amanda Torres",
+        "Jessica Cruz",
+        "Melissa Lopez",
+        "Christine Martinez",
+        "Danielle Santos"
+      ]
+    },
+    {
+      "category": "Bestman",
+      "names": [
+        "Miguel Santiago"
+      ]
+    },
+    {
+      "category": "Maid of Honor",
+      "names": [
+        "Maria Rita"
+      ]
+    },
+    {
+      "category": "Ring Bearer",
+      "names": [
+        "Lucas Santiago"
+      ]
+    },
+    {
+      "category": "Flower Girl",
+      "names": [
+        "Sophia Rita"
+      ]
+    }
+  ]
+}

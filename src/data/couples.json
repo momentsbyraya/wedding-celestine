@@ -1,0 +1,15 @@
+{
+  "couple": {
+    "names": {
+      "first": "Mikaela",
+      "second": "Evander",
+      "together": "Mikaela & Evander"
+    },
+    "wedding": {
+      "date": "2026-01-04",
+      "time": "2:00 PM",
+      "location": "San Francisco, CA"
+    },
+    "announcement": "We're getting married!"
+  }
+} 

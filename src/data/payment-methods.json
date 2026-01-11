@@ -1,0 +1,14 @@
+{
+  "paymentMethods": [
+    {
+      "name": "Bank of the Philippine Islands",
+      "image": "/assets/images/monetary-gifts/BPIQR_BPI.png",
+      "accountInfo": {
+        "provider": "BPI",
+        "accountNumber": "",
+        "accountName": "",
+        "qrCode": "/assets/images/monetary-gifts/BPIQR_BPI.png"
+      }
+    }
+  ]
+} 
