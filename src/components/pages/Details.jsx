@@ -14,6 +14,7 @@ const Details = () => {
   const navigate = useNavigate()
   const [openFaqIndex, setOpenFaqIndex] = useState(null)
   const [isGiftModalOpen, setIsGiftModalOpen] = useState(false)
+  const [isPhotoUploadModalOpen, setIsPhotoUploadModalOpen] = useState(false)
   const [copiedIndex, setCopiedIndex] = useState(null)
   const sectionRef = useRef(null)
   const backButtonRef = useRef(null)
@@ -26,7 +27,9 @@ const Details = () => {
   const eventsRef = useRef(null)
   const dressCodeTitleRef = useRef(null)
   const dressCodeContentRef = useRef(null)
+  const entourageRef = useRef(null)
   const giftRegistryRef = useRef(null)
+  const photoUploadRef = useRef(null)
   const faqRef = useRef(null)
 
   const ceremony = venuesData.ceremony
@@ -235,6 +238,32 @@ const Details = () => {
       })
     }
 
+    // Photo Upload animation
+    if (photoUploadRef.current) {
+      ScrollTrigger.create({
+        trigger: photoUploadRef.current,
+        start: "top 80%",
+        animation: gsap.fromTo(photoUploadRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+        ),
+        toggleActions: "play none none reverse"
+      })
+    }
+
+    // Entourage animation
+    if (entourageRef.current) {
+      ScrollTrigger.create({
+        trigger: entourageRef.current,
+        start: "top 80%",
+        animation: gsap.fromTo(entourageRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" }
+        ),
+        toggleActions: "play none none reverse"
+      })
+    }
+
     // FAQ section animation - animate items one after the other
     if (faqRef.current) {
       const faqItems = faqRef.current.querySelectorAll('.faq-item')
@@ -423,7 +452,7 @@ const Details = () => {
           <div className="mt-20 relative" style={{
             backgroundImage: 'url(/assets/images/prenup/APA_0642.JPG)',
             backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            backgroundPosition: '75% center',
             backgroundRepeat: 'no-repeat',
             padding: '2rem 0',
             width: '100vw',
@@ -454,7 +483,7 @@ const Details = () => {
 
               {/* Timeline Events */}
               <div ref={eventsRef} className="space-y-12 sm:space-y-16 md:space-y-20 lg:space-y-24">
-                {/* Event 1 - 3:30 PM – Wedding Ceremony */}
+                {/* Event 1 - 3:30 PM – Arrival of Guest */}
                 <div className="flex items-center relative min-h-[60px]">
                   <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1" style={{ color: '#f5f5f0' }}>
@@ -462,14 +491,44 @@ const Details = () => {
                     </div>
                     <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
                     <div className="text-sm sm:text-base md:text-lg font-albert" style={{ color: '#f5f5f0' }}>
-                      Wedding Ceremony
+                      Arrival of Guest
                     </div>
                   </div>
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
                   <div className="w-1/2 pl-6 text-left"></div>
                 </div>
 
-                {/* Event 2 - 5:30 PM – Reception */}
+                {/* Event 2 - 4:00 PM – Wedding Ceremony */}
+                <div className="flex items-center relative min-h-[60px]">
+                  <div className="w-1/2 pr-6 text-right"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
+                  <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1" style={{ color: '#f5f5f0' }}>
+                      4:00 PM
+                    </div>
+                    <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
+                    <div className="text-sm sm:text-base md:text-lg font-albert" style={{ color: '#f5f5f0' }}>
+                      Wedding Ceremony
+                    </div>
+                  </div>
+                </div>
+
+                {/* Event 3 - 5:00 PM – Snacks and Wedding Favors for Guests */}
+                <div className="flex items-center relative min-h-[60px]">
+                  <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1" style={{ color: '#f5f5f0' }}>
+                      5:00 PM
+                    </div>
+                    <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
+                    <div className="text-sm sm:text-base md:text-lg font-albert" style={{ color: '#f5f5f0' }}>
+                      Snacks and Wedding Favors for Guests
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
+                  <div className="w-1/2 pl-6 text-left"></div>
+                </div>
+
+                {/* Event 4 - 5:30 PM – Event and Reception */}
                 <div className="flex items-center relative min-h-[60px]">
                   <div className="w-1/2 pr-6 text-right"></div>
                   <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
@@ -479,24 +538,39 @@ const Details = () => {
                     </div>
                     <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
                     <div className="text-sm sm:text-base md:text-lg font-albert" style={{ color: '#f5f5f0' }}>
-                      Reception
+                      Event and Reception
                     </div>
                   </div>
                 </div>
 
-                {/* Event 3 - 7:30 PM – End of Program */}
+                {/* Event 5 - 7:00 PM – Lighting of Sky Lanterns */}
                 <div className="flex items-center relative min-h-[60px]">
                   <div className="w-1/2 pr-6 text-right flex flex-col justify-center">
+                    <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1" style={{ color: '#f5f5f0' }}>
+                      7:00 PM
+                    </div>
+                    <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
+                    <div className="text-sm sm:text-base md:text-lg font-albert" style={{ color: '#f5f5f0' }}>
+                      Lighting of Sky Lanterns
+                    </div>
+                  </div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
+                  <div className="w-1/2 pl-6 text-left"></div>
+                </div>
+
+                {/* Event 6 - 7:30 PM – End of Event */}
+                <div className="flex items-center relative min-h-[60px]">
+                  <div className="w-1/2 pr-6 text-right"></div>
+                  <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
+                  <div className="w-1/2 pl-6 text-left flex flex-col justify-center">
                     <div className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl alice-regular mb-1" style={{ color: '#f5f5f0' }}>
                       7:30 PM
                     </div>
                     <div className="border-b border-dashed border-[#666666] opacity-50 mb-1"></div>
                     <div className="text-sm sm:text-base md:text-lg font-albert" style={{ color: '#f5f5f0' }}>
-                      End of Program
+                      End of Event
                     </div>
                   </div>
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-3 h-3 bg-[#666666] rounded-full z-10"></div>
-                  <div className="w-1/2 pl-6 text-left"></div>
                 </div>
               </div>
             </div>
@@ -519,59 +593,251 @@ const Details = () => {
                     Dress Code
                   </span>
                 </h3>
+                {/* General Dress Code Description */}
+                <p className="text-base sm:text-lg font-albert font-thin mt-4 mb-4" style={{ color: '#171717' }}>
+                  Strictly formal. No slippers, shorts, jeans, tshirt, or white color.
+                </p>
+                {/* Mini Title */}
+                <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium mt-2 uppercase" style={{ color: '#006666' }}>
+                  Sponsor
+                </h4>
               </div>
             </div>
 
             {/* Dress Code Content */}
             <div ref={dressCodeContentRef} className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
-              {/* Paragraph Description */}
-              {dresscode.mainDressCode && (
+              {/* Sponsor Content */}
+              <div className="mb-12">
+                {/* Paragraph Description */}
                 <div className="text-center mb-8">
                   <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
-                    {dresscode.mainDressCode.description}
+                    Beige barong for Ninong and elegant beige gown for Ninang.
                   </p>
                 </div>
-              )}
 
-              {/* Image and Swatches Side by Side */}
-              {dresscode.sections && dresscode.sections.map((section, index) => (
-                <div key={index} className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
-                  {/* Section Image */}
-                  {section.type === "image" && section.image && (
+                {/* Image and Swatches Side by Side */}
+                {dresscode.sections && dresscode.sections.length > 0 && (
+                  <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
+                    {/* Section Image */}
                     <div className="flex-shrink-0" style={{ maxWidth: '200px', width: '100%' }}>
                       <img 
-                        src={section.image} 
-                        alt={section.title || "Dress Code"} 
+                        src="/assets/images/dresscode/sponsor.png" 
+                        alt="Sponsor Dress Code" 
                         className="w-full h-auto object-contain"
                         style={{ maxHeight: '300px' }}
                       />
                     </div>
-                  )}
-                  
-                  {/* Color Palette */}
-                  {section.colors && section.colors.length > 0 && (
-                    <div className="flex flex-col items-center justify-center flex-shrink-0">
-                      {section.colors.map((color, colorIndex) => (
-                        <div 
-                          key={colorIndex} 
-                          className="relative group cursor-pointer"
-                          title={color.name}
-                          style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
-                        >
-                          <div 
-                            className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
-                            style={{ backgroundColor: color.hex }}
-                          />
-                          {/* Tooltip on hover */}
-                          <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
-                            {color.name}
-                          </div>
+                    
+                    {/* Color Palette - Beige and Black */}
+                    {(() => {
+                      const sponsorColors = [
+                        { name: "Beige", hex: "#D2B48C" },
+                        { name: "Black", hex: "#000000" }
+                      ];
+                      return (
+                        <div className="flex flex-col items-center justify-center flex-shrink-0">
+                          {sponsorColors.map((color, colorIndex) => (
+                            <div 
+                              key={colorIndex} 
+                              className="relative group cursor-pointer"
+                              title={color.name}
+                              style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
+                            >
+                              <div 
+                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
+                                style={{ backgroundColor: color.hex }}
+                              />
+                              {/* Tooltip on hover */}
+                              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                                {color.name}
+                              </div>
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                  )}
+                      );
+                    })()}
+                  </div>
+                )}
+              </div>
+
+              {/* Best Man & Maid of Honor Title */}
+              <div className="text-center mb-4">
+                <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium uppercase" style={{ color: '#006666' }}>
+                  Best Man & Maid of Honor
+                </h4>
+              </div>
+              {/* Best Man & Maid of Honor Content */}
+              <div className="mb-12">
+                {/* Paragraph Description */}
+                <div className="text-center mb-8">
+                  <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
+                    Cyan-blue formal attire and gown.
+                  </p>
                 </div>
-              ))}
+
+                {/* Image and Swatches Side by Side */}
+                {dresscode.sections && dresscode.sections.length > 0 && (
+                  <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
+                    {/* Section Image */}
+                    <div className="flex-shrink-0" style={{ maxWidth: '200px', width: '100%' }}>
+                      <img 
+                        src="/assets/images/dresscode/bestman_maidhonor.png" 
+                        alt="Best Man & Maid of Honor Dress Code" 
+                        className="w-full h-auto object-contain"
+                        style={{ maxHeight: '300px' }}
+                      />
+                    </div>
+                    
+                    {/* Color Palette - Single Color */}
+                    {(() => {
+                      const bestManColors = [
+                        { name: "Cyan-blue", hex: "#2B547E" }
+                      ];
+                      return (
+                        <div className="flex flex-col items-center justify-center flex-shrink-0">
+                          {bestManColors.map((color, colorIndex) => (
+                            <div 
+                              key={colorIndex} 
+                              className="relative group cursor-pointer"
+                              title={color.name}
+                              style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
+                            >
+                              <div 
+                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
+                                style={{ backgroundColor: color.hex }}
+                              />
+                              {/* Tooltip on hover */}
+                              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                                {color.name}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })()}
+                  </div>
+                )}
+              </div>
+
+              {/* Entourage Title */}
+              <div ref={entourageRef} className="text-center mb-4">
+                <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium uppercase" style={{ color: '#006666' }}>
+                  Entourage
+                </h4>
+              </div>
+              {/* Entourage Content */}
+              <div className="mb-12">
+                {/* Paragraph Description */}
+                <div className="text-center mb-8">
+                  <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
+                    Grooms men wear teal blue suspenders and tie with formal slacks, while brides maid wear teal green gown.
+                  </p>
+                </div>
+
+                {/* Image and Swatches Side by Side */}
+                {dresscode.sections && dresscode.sections.length > 0 && (
+                  <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
+                    {/* Section Image */}
+                    <div className="flex-shrink-0" style={{ maxWidth: '200px', width: '100%' }}>
+                      <img 
+                        src="/assets/images/dresscode/entourage.png" 
+                        alt="Entourage Dress Code" 
+                        className="w-full h-auto object-contain"
+                        style={{ maxHeight: '300px' }}
+                      />
+                    </div>
+                    
+                    {/* Color Palette - Men: Teal Blue, Black | Women: Teal Green */}
+                    {(() => {
+                      const entourageColors = [
+                        { name: "Teal Blue (Men)", hex: "#367588" },
+                        { name: "Black (Men)", hex: "#000000" },
+                        { name: "Teal Green (Women)", hex: "#008080" }
+                      ];
+                      return (
+                        <div className="flex flex-col items-center justify-center flex-shrink-0">
+                          {entourageColors.map((color, colorIndex) => (
+                            <div 
+                              key={colorIndex} 
+                              className="relative group cursor-pointer"
+                              title={color.name}
+                              style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
+                            >
+                              <div 
+                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
+                                style={{ backgroundColor: color.hex }}
+                              />
+                              {/* Tooltip on hover */}
+                              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                                {color.name}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      );
+                    })()}
+                  </div>
+                )}
+              </div>
+
+              {/* Guest Title */}
+              <div className="text-center mb-4">
+                <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium uppercase" style={{ color: '#006666' }}>
+                  Guest
+                </h4>
+              </div>
+              
+              {/* Paragraph Description */}
+              <div className="text-center mb-8">
+                <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
+                  Guests are encouraged to dress elegantly while complementing the wedding's color theme. Any teal, black, or gray long-sleeve polo or formal top.
+                </p>
+              </div>
+
+              {/* Image and Swatches Side by Side */}
+              {dresscode.sections && dresscode.sections.length > 0 && (
+                <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
+                  {/* Section Image */}
+                  <div className="flex-shrink-0" style={{ maxWidth: '200px', width: '100%' }}>
+                    <img 
+                      src="/assets/images/dresscode/guest.png" 
+                      alt="Guest Dress Code" 
+                      className="w-full h-auto object-contain"
+                      style={{ maxHeight: '300px' }}
+                    />
+                  </div>
+                  
+                  {/* Color Palette - Only 3 colors: Teal, Black, Gray */}
+                  {(() => {
+                    const guestColors = [
+                      { name: "Black", hex: "#000000" },
+                      { name: "Teal Green", hex: "#008080" },
+                      { name: "Gray", hex: "#808080" }
+                    ];
+                    return (
+                      <div className="flex flex-col items-center justify-center flex-shrink-0">
+                        {guestColors.map((color, colorIndex) => (
+                          <div 
+                            key={colorIndex} 
+                            className="relative group cursor-pointer"
+                            title={color.name}
+                            style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
+                          >
+                            <div 
+                              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
+                              style={{ backgroundColor: color.hex }}
+                            />
+                            {/* Tooltip on hover */}
+                            <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                              {color.name}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    );
+                  })()}
+                </div>
+              )}
             </div>
           </div>
 
@@ -613,6 +879,51 @@ const Details = () => {
                     }}
                   >
                     <span className="text-white font-medium text-sm sm:text-base">Send Gift</span>
+                    <ArrowRight className="w-4 h-4 text-white" />
+                  </div>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* Photo Upload Section */}
+          <div className="mt-20 relative">
+            <div ref={photoUploadRef} className="text-center">
+              <h3 className="relative inline-block px-6 py-3 mb-8">
+                <span 
+                  className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none" 
+                  style={{ 
+                    lineHeight: '0.8',
+                    color: '#006666'
+                  }}
+                >
+                  Upload
+                </span>
+              </h3>
+              <p className="text-base sm:text-lg font-albert font-thin text-[#333333] max-w-3xl mx-auto leading-relaxed mb-6">
+                We'd love to see your photos and videos from our special day! Please use the QR code below to upload your memories.
+              </p>
+              
+              {/* Upload Photos Button */}
+              <div className="flex justify-center items-center mb-6">
+                <button
+                  onClick={() => setIsPhotoUploadModalOpen(true)}
+                  className="flex items-center justify-center hover:opacity-80 transition-all duration-300 group"
+                  style={{ 
+                    backgroundColor: themeConfig.cssVariables['--accent-bg'],
+                    borderRadius: '30px',
+                    padding: '4px',
+                    border: '1px solid #f5f5f0'
+                  }}
+                >
+                  <div 
+                    className="flex items-center justify-center px-8 py-2 gap-2"
+                    style={{ 
+                      border: '1px solid #f5f5f0',
+                      borderRadius: '30px'
+                    }}
+                  >
+                    <span className="text-white font-medium text-sm sm:text-base">Upload</span>
                     <ArrowRight className="w-4 h-4 text-white" />
                   </div>
                 </button>
@@ -748,7 +1059,7 @@ const Details = () => {
         <div className="relative bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
           {/* Header */}
           <div className="sticky top-0 bg-white z-10 flex items-center justify-between p-6 border-b border-gray-200 rounded-t-2xl">
-            <h3 className="text-2xl sm:text-3xl alice-regular font-black text-gray-800" style={{ fontWeight: 900 }}>Payment Methods</h3>
+            <h3 className="text-2xl sm:text-3xl alice-regular font-black text-gray-800" style={{ fontWeight: 900 }}>Methods</h3>
             <button
               onClick={() => setIsGiftModalOpen(false)}
               className="text-gray-500 hover:text-gray-800 transition-colors duration-200"
@@ -777,6 +1088,51 @@ const Details = () => {
                 ))}
               </div>
             )}
+          </div>
+        </div>
+      </div>,
+      document.body
+    )}
+
+    {/* Photo Upload Modal */}
+    {isPhotoUploadModalOpen && createPortal(
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+        {/* Backdrop */}
+        <div 
+          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+          onClick={() => setIsPhotoUploadModalOpen(false)}
+        />
+        
+        {/* Modal Content */}
+        <div className="relative bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          {/* Header */}
+          <div className="sticky top-0 bg-white z-10 flex items-center justify-between p-6 border-b border-gray-200 rounded-t-2xl">
+            <h3 className="text-2xl sm:text-3xl alice-regular font-black text-gray-800" style={{ fontWeight: 900 }}>Upload</h3>
+            <button
+              onClick={() => setIsPhotoUploadModalOpen(false)}
+              className="text-gray-500 hover:text-gray-800 transition-colors duration-200"
+            >
+              <X className="w-6 h-6" />
+            </button>
+          </div>
+
+          {/* Content */}
+          <div className="p-6">
+            <div className="flex flex-col items-center justify-center">
+              <p className="text-base sm:text-lg font-albert text-gray-700 mb-6 text-center max-w-2xl">
+                Scan the QR code below to upload your photos and videos from our wedding day. We'd love to see your memories!
+              </p>
+              {/* QR Code Placeholder - Replace with actual QR code image */}
+              <div className="flex items-center justify-center bg-gray-100 rounded-lg p-8">
+                <div className="text-center">
+                  <p className="text-gray-500 mb-4">QR Code for Photo Upload</p>
+                  <div className="w-64 h-64 bg-gray-200 rounded-lg flex items-center justify-center">
+                    <Camera className="w-16 h-16 text-gray-400" />
+                  </div>
+                  <p className="text-sm text-gray-500 mt-4">Replace this with your actual QR code image</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>,

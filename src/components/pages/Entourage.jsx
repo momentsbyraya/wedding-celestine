@@ -319,14 +319,14 @@ const Entourage = () => {
             <div ref={groomRef} className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
               {/* Groom Name */}
               <div className="flex-1">
-                <p className="text-[20px] sm:text-lg imperial-script-regular text-[#333333] mb-2 text-right">Name Of Groom</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right" style={{ color: '#006666' }}>{removeMiddleInitial(entourage.couple.groom.name)}</p>
+                <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-right" style={{ color: '#006666' }}>Name Of Groom</p>
+                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{removeMiddleInitial(entourage.couple.groom.name)}</p>
               </div>
 
               {/* Bride Name */}
               <div className="flex-1">
-                <p className="text-[20px] sm:text-lg imperial-script-regular text-[#333333] mb-2 text-left">Name Of Bride</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left" style={{ color: '#006666' }}>{removeMiddleInitial(entourage.couple.bride.name)}</p>
+                <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-left" style={{ color: '#006666' }}>Name Of Bride</p>
+                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{removeMiddleInitial(entourage.couple.bride.name)}</p>
               </div>
             </div>
 
@@ -334,16 +334,16 @@ const Entourage = () => {
             <div ref={parentsRef} className="mb-6 flex flex-row gap-4 sm:gap-6 justify-center items-center">
               {/* Groom's Parents */}
               <div className="flex-1">
-                <p className="text-[20px] sm:text-lg imperial-script-regular text-[#333333] mb-2 text-right">Groom's Parents</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right" style={{ color: '#006666' }}>{entourage.parents.groom.father}</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right" style={{ color: '#006666' }}>{entourage.parents.groom.mother}</p>
+                <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-right" style={{ color: '#006666' }}>Groom's Parents</p>
+                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.father}</p>
+                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-right text-[#333333]">{entourage.parents.groom.mother}</p>
               </div>
 
               {/* Bride's Parents */}
               <div className="flex-1">
-                <p className="text-[20px] sm:text-lg imperial-script-regular text-[#333333] mb-2 text-left">Bride's Parents</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left" style={{ color: '#006666' }}>{entourage.parents.bride.father}</p>
-                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left" style={{ color: '#006666' }}>{entourage.parents.bride.mother}</p>
+                <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-left" style={{ color: '#006666' }}>Bride's Parents</p>
+                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.father}</p>
+                <p className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase whitespace-nowrap overflow-hidden text-ellipsis text-left text-[#333333]">{entourage.parents.bride.mother}</p>
               </div>
             </div>
 
@@ -383,7 +383,7 @@ const Entourage = () => {
                 <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start">
                   {/* GROOMSMEN Column */}
                   <div className="flex-1">
-                    <p className="text-[20px] sm:text-lg imperial-script-regular text-[#333333] mb-2 text-right">Groomsmen</p>
+                    <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-right" style={{ color: '#006666' }}>Groomsmen</p>
                     <div className="space-y-2">
                       {secondarySponsors.groomsmen && secondarySponsors.groomsmen.map((name, index) => (
                         <p key={index} className="groomsmen-item text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] text-right whitespace-nowrap overflow-hidden text-ellipsis">
@@ -394,7 +394,7 @@ const Entourage = () => {
                   </div>
                   {/* BRIDESMAID Column */}
                   <div className="flex-1">
-                    <p className="text-[20px] sm:text-lg imperial-script-regular text-[#333333] mb-2 text-left">Bridesmaids</p>
+                    <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-left" style={{ color: '#006666' }}>Bridesmaids</p>
                     <div className="space-y-2">
                       {secondarySponsors.bridesmaid && secondarySponsors.bridesmaid.map((name, index) => (
                         <p key={index} className="bridesmaids-item text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] text-left whitespace-nowrap overflow-hidden text-ellipsis">
