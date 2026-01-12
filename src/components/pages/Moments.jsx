@@ -686,13 +686,6 @@ const Moments = () => {
                    setSelectedImageIndex(lightboxImages.indexOf('/assets/images/prenup/APA_0788.JPG'))
                  }}
                />
-               {/* Love Quote Overlay */}
-               <div className="hidden md:block absolute bottom-6 left-6 sm:bottom-8 sm:left-8 md:bottom-12 md:left-12 max-w-sm sm:max-w-md md:max-w-lg lg:max-w-xl z-10">
-                 <p className="text-white text-base sm:text-lg md:text-xl lg:text-2xl font-albert font-bold leading-relaxed drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]" style={{ textShadow: '2px 2px 4px rgba(0, 0, 0, 0.8)' }}>
-                   "<span className="imperial-script-regular text-4xl sm:text-5xl md:text-6xl lg:text-7xl inline-block">A</span>fter every 'no', there's a 'YES' waiting.<br />
-                   You just have to be consistent enough to find it."
-                 </p>
-               </div>
              </div>
            </div>
 

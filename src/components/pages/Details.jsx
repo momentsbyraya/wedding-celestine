@@ -597,10 +597,6 @@ const Details = () => {
                 <p className="text-base sm:text-lg font-albert font-thin mt-4 mb-4" style={{ color: '#171717' }}>
                   Strictly formal. No slippers, shorts, jeans, tshirt, or white color.
                 </p>
-                {/* Mini Title */}
-                <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium mt-2 uppercase" style={{ color: '#006666' }}>
-                  Sponsor
-                </h4>
               </div>
             </div>
 
@@ -608,6 +604,12 @@ const Details = () => {
             <div ref={dressCodeContentRef} className="max-w-xs sm:max-w-md lg:max-w-3xl w-full mx-auto">
               {/* Sponsor Content */}
               <div className="mb-12">
+                {/* Sponsor Title */}
+                <div className="text-center mb-4">
+                  <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium uppercase" style={{ color: '#006666' }}>
+                    Sponsor
+                  </h4>
+                </div>
                 {/* Paragraph Description */}
                 <div className="text-center mb-8">
                   <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
@@ -644,7 +646,7 @@ const Details = () => {
                               style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
                             >
                               <div 
-                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
+                                className="w-12 h-12 sm:w-16 sm:h-16 max-w-12 max-h-12 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
                                 style={{ backgroundColor: color.hex }}
                               />
                               {/* Tooltip on hover */}
@@ -660,124 +662,128 @@ const Details = () => {
                 )}
               </div>
 
-              {/* Best Man & Maid of Honor Title */}
-              <div className="text-center mb-4">
-                <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium uppercase" style={{ color: '#006666' }}>
-                  Best Man & Maid of Honor
-                </h4>
-              </div>
-              {/* Best Man & Maid of Honor Content */}
-              <div className="mb-12">
-                {/* Paragraph Description */}
-                <div className="text-center mb-8">
-                  <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
-                    Cyan-blue formal attire and gown.
-                  </p>
+              {/* Entourage Section - Parent Title */}
+              <div ref={entourageRef} className="mb-12">
+                {/* Entourage Title */}
+                <div className="text-center mb-8 block w-full">
+                  <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium uppercase block w-full" style={{ color: '#006666' }}>
+                    Entourage
+                  </h4>
                 </div>
-
-                {/* Image and Swatches Side by Side */}
-                {dresscode.sections && dresscode.sections.length > 0 && (
-                  <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
-                    {/* Section Image */}
-                    <div className="flex-shrink-0" style={{ maxWidth: '200px', width: '100%' }}>
-                      <img 
-                        src="/assets/images/dresscode/bestman_maidhonor.png" 
-                        alt="Best Man & Maid of Honor Dress Code" 
-                        className="w-full h-auto object-contain"
-                        style={{ maxHeight: '300px' }}
-                      />
+                
+                {/* Entourage Children Sections Container */}
+                <div className="flex flex-col lg-custom:flex-row lg-custom:gap-8 lg-custom:items-start">
+                  {/* Groomsmen & Bridesmaid Section */}
+                  <div className="flex-1 mb-12 lg-custom:mb-0">
+                    {/* Paragraph Description */}
+                    <div className="text-center mb-8">
+                      <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
+                        Grooms men wear teal blue suspenders and tie with formal slacks, while brides maid wear teal green gown.
+                      </p>
                     </div>
-                    
-                    {/* Color Palette - Single Color */}
-                    {(() => {
-                      const bestManColors = [
-                        { name: "Cyan-blue", hex: "#2B547E" }
-                      ];
-                      return (
-                        <div className="flex flex-col items-center justify-center flex-shrink-0">
-                          {bestManColors.map((color, colorIndex) => (
-                            <div 
-                              key={colorIndex} 
-                              className="relative group cursor-pointer"
-                              title={color.name}
-                              style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
-                            >
-                              <div 
-                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
-                                style={{ backgroundColor: color.hex }}
-                              />
-                              {/* Tooltip on hover */}
-                              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
-                                {color.name}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      );
-                    })()}
-                  </div>
-                )}
-              </div>
 
-              {/* Entourage Title */}
-              <div ref={entourageRef} className="text-center mb-4">
-                <h4 className="text-xl sm:text-2xl md:text-3xl font-albert font-medium uppercase" style={{ color: '#006666' }}>
-                  Entourage
-                </h4>
-              </div>
-              {/* Entourage Content */}
-              <div className="mb-12">
-                {/* Paragraph Description */}
-                <div className="text-center mb-8">
-                  <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
-                    Grooms men wear teal blue suspenders and tie with formal slacks, while brides maid wear teal green gown.
-                  </p>
+                    {/* Image and Swatches Side by Side */}
+                    {dresscode.sections && dresscode.sections.length > 0 && (
+                      <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
+                        {/* Section Image */}
+                        <div className="flex-shrink-0" style={{ maxWidth: '200px', width: '100%' }}>
+                          <img 
+                            src="/assets/images/dresscode/entourage.png" 
+                            alt="Entourage Dress Code" 
+                            className="w-full h-auto object-contain"
+                            style={{ maxHeight: '300px' }}
+                          />
+                        </div>
+                        
+                        {/* Color Palette - Men: Teal Blue, Black | Women: Teal Green */}
+                        {(() => {
+                          const entourageColors = [
+                            { name: "Teal Blue (Men)", hex: "#367588" },
+                            { name: "Black (Men)", hex: "#000000" },
+                            { name: "Teal Green (Women)", hex: "#008080" }
+                          ];
+                          return (
+                            <div className="flex flex-col items-center justify-center flex-shrink-0">
+                              {entourageColors.map((color, colorIndex) => (
+                                <div 
+                                  key={colorIndex} 
+                                  className="relative group cursor-pointer"
+                                  title={color.name}
+                                  style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
+                                >
+                                  <div 
+                                    className="w-12 h-12 sm:w-16 sm:h-16 max-w-12 max-h-12 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
+                                    style={{ backgroundColor: color.hex }}
+                                  />
+                                  {/* Tooltip on hover */}
+                                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                                    {color.name}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Best Man & Maid of Honor Section */}
+                  <div className="flex-1">
+                  {/* Best Man & Maid of Honor Content */}
+                  <div>
+                    {/* Paragraph Description */}
+                    <div className="text-center mb-8">
+                      <p className="text-base sm:text-lg font-albert font-thin mb-8" style={{ color: '#171717' }}>
+                        The best man must wear a cyan-blue suit and neck tie, while the maid of honor must also wear a cyan-blue long formal gown
+                      </p>
+                    </div>
+
+                    {/* Image and Swatches Side by Side */}
+                    {dresscode.sections && dresscode.sections.length > 0 && (
+                      <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
+                        {/* Section Image */}
+                        <div className="flex-shrink-0" style={{ maxWidth: '200px', width: '100%' }}>
+                          <img 
+                            src="/assets/images/dresscode/bestman_maidhonor.png" 
+                            alt="Best Man & Maid of Honor Dress Code" 
+                            className="w-full h-auto object-contain"
+                            style={{ maxHeight: '300px' }}
+                          />
+                        </div>
+                        
+                        {/* Color Palette - Single Color */}
+                        {(() => {
+                          const bestManColors = [
+                            { name: "Cyan-blue", hex: "#2B547E" }
+                          ];
+                          return (
+                            <div className="flex flex-col items-center justify-center flex-shrink-0">
+                              {bestManColors.map((color, colorIndex) => (
+                                <div 
+                                  key={colorIndex} 
+                                  className="relative group cursor-pointer"
+                                  title={color.name}
+                                  style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
+                                >
+                                  <div 
+                                    className="w-12 h-12 sm:w-16 sm:h-16 max-w-12 max-h-12 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
+                                    style={{ backgroundColor: color.hex }}
+                                  />
+                                  {/* Tooltip on hover */}
+                                  <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
+                                    {color.name}
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          );
+                        })()}
+                      </div>
+                    )}
+                  </div>
                 </div>
-
-                {/* Image and Swatches Side by Side */}
-                {dresscode.sections && dresscode.sections.length > 0 && (
-                  <div className="flex flex-row items-center justify-center gap-6 sm:gap-8 w-full">
-                    {/* Section Image */}
-                    <div className="flex-shrink-0" style={{ maxWidth: '200px', width: '100%' }}>
-                      <img 
-                        src="/assets/images/dresscode/entourage.png" 
-                        alt="Entourage Dress Code" 
-                        className="w-full h-auto object-contain"
-                        style={{ maxHeight: '300px' }}
-                      />
-                    </div>
-                    
-                    {/* Color Palette - Men: Teal Blue, Black | Women: Teal Green */}
-                    {(() => {
-                      const entourageColors = [
-                        { name: "Teal Blue (Men)", hex: "#367588" },
-                        { name: "Black (Men)", hex: "#000000" },
-                        { name: "Teal Green (Women)", hex: "#008080" }
-                      ];
-                      return (
-                        <div className="flex flex-col items-center justify-center flex-shrink-0">
-                          {entourageColors.map((color, colorIndex) => (
-                            <div 
-                              key={colorIndex} 
-                              className="relative group cursor-pointer"
-                              title={color.name}
-                              style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
-                            >
-                              <div 
-                                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
-                                style={{ backgroundColor: color.hex }}
-                              />
-                              {/* Tooltip on hover */}
-                              <div className="absolute bottom-full left-1/2 transform -translate-x-1/2 mb-2 px-2 py-1 bg-[#171717] text-white text-xs font-albert rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap z-10">
-                                {color.name}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      );
-                    })()}
-                  </div>
-                )}
+                </div>
               </div>
 
               {/* Guest Title */}
@@ -824,7 +830,7 @@ const Details = () => {
                             style={{ marginTop: colorIndex > 0 ? '-20px' : '0' }}
                           >
                             <div 
-                              className="w-12 h-12 sm:w-16 sm:h-16 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
+                              className="w-12 h-12 sm:w-16 sm:h-16 max-w-12 max-h-12 rounded-full border-2 border-white/30 shadow-md transition-transform duration-200 hover:scale-110"
                               style={{ backgroundColor: color.hex }}
                             />
                             {/* Tooltip on hover */}
