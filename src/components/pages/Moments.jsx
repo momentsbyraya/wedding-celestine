@@ -49,79 +49,100 @@ const Moments = () => {
 
   // All prenup images
   const allPrenupImages = [
-    '/assets/images/prenup/APA_0744.JPG',
-    '/assets/images/prenup/APA_0809.JPG',
-    '/assets/images/prenup/APA_0812.JPG',
-    '/assets/images/prenup/APA_0851.JPG',
-    '/assets/images/prenup/APA_0868.JPG',
-    '/assets/images/prenup/APA_0871.JPG',
-    '/assets/images/prenup/APA_0880.JPG',
+    '/assets/images/prenup/APA_0895.JPG',
     '/assets/images/prenup/APA_0891.JPG',
-    '/assets/images/prenup/APA_0914.JPG',
-    '/assets/images/prenup/APA_0947.JPG',
-    '/assets/images/prenup/APA_0970.JPG',
-    '/assets/images/prenup/APA_0977.JPG',
-    '/assets/images/prenup/APA_0998.JPG',
-    '/assets/images/prenup/DSC02736.JPG',
-    '/assets/images/prenup/DSC02739.JPG',
-    '/assets/images/prenup/DSC02749.JPG',
-    '/assets/images/prenup/DSC02761.JPG',
-    '/assets/images/prenup/DSC02775.JPG',
-    '/assets/images/prenup/DSC02798.JPG',
-    '/assets/images/prenup/DSC02804.JPG',
+    '/assets/images/prenup/APA_0856.JPG',
+    '/assets/images/prenup/APA_0786%20-%20Copy.JPG',
     '/assets/images/prenup/APA_0759.JPG',
-    '/assets/images/prenup/APA_0788.JPG'
+    '/assets/images/prenup/APA_0384.JPG',
+    '/assets/images/prenup/APA_0331.JPG',
+    '/assets/images/prenup/APA_0326.JPG',
+    '/assets/images/prenup/APA_0259.JPG',
+    '/assets/images/prenup/APA_0244.JPG',
+    '/assets/images/prenup/APA_0215.JPG',
+    '/assets/images/prenup/APA_0177.JPG',
+    '/assets/images/prenup/APA_0141.JPG',
+    '/assets/images/prenup/APA_0109.JPG',
+    '/assets/images/prenup/APA_9785.JPG',
+    '/assets/images/prenup/APA_9774.JPG',
+    '/assets/images/prenup/APA_9771.JPG',
+    '/assets/images/prenup/APA_9637.JPG',
+    '/assets/images/prenup/DSC03803%20-%20Copy.JPG',
+    '/assets/images/prenup/DSC03673.JPG',
+    '/assets/images/prenup/DSC03546.JPG',
+    '/assets/images/prenup/DSC03495.JPG',
+    '/assets/images/prenup/DSC03402.JPG',
+    '/assets/images/prenup/DSC03364.JPG',
+    '/assets/images/prenup/DSC03316.JPG',
+    '/assets/images/prenup/DSC03006.JPG',
+    '/assets/images/prenup/DSC02853.JPG',
+    '/assets/images/prenup/DSC02783.JPG',
+    '/assets/images/prenup/DSC02765.JPG'
   ]
 
   // Images array for the lightbox (includes all images in same order)
   const lightboxImages = [
-    '/assets/images/prenup/APA_0744.JPG',
-    '/assets/images/prenup/APA_0809.JPG',
-    '/assets/images/prenup/APA_0812.JPG',
-    '/assets/images/prenup/APA_0851.JPG',
-    '/assets/images/prenup/APA_0868.JPG',
-    '/assets/images/prenup/APA_0871.JPG',
-    '/assets/images/prenup/APA_0880.JPG',
+    '/assets/images/prenup/APA_0895.JPG',
     '/assets/images/prenup/APA_0891.JPG',
-    '/assets/images/prenup/APA_0914.JPG',
-    '/assets/images/prenup/APA_0947.JPG',
-    '/assets/images/prenup/APA_0970.JPG',
-    '/assets/images/prenup/APA_0977.JPG',
-    '/assets/images/prenup/APA_0998.JPG',
-    '/assets/images/prenup/DSC02736.JPG',
-    '/assets/images/prenup/DSC02739.JPG',
-    '/assets/images/prenup/DSC02749.JPG',
-    '/assets/images/prenup/DSC02761.JPG',
-    '/assets/images/prenup/DSC02775.JPG',
-    '/assets/images/prenup/DSC02798.JPG',
-    '/assets/images/prenup/DSC02804.JPG',
+    '/assets/images/prenup/APA_0856.JPG',
+    '/assets/images/prenup/APA_0786%20-%20Copy.JPG',
     '/assets/images/prenup/APA_0759.JPG',
-    '/assets/images/prenup/APA_0788.JPG'
+    '/assets/images/prenup/APA_0384.JPG',
+    '/assets/images/prenup/APA_0331.JPG',
+    '/assets/images/prenup/APA_0326.JPG',
+    '/assets/images/prenup/APA_0259.JPG',
+    '/assets/images/prenup/APA_0244.JPG',
+    '/assets/images/prenup/APA_0215.JPG',
+    '/assets/images/prenup/APA_0177.JPG',
+    '/assets/images/prenup/APA_0141.JPG',
+    '/assets/images/prenup/APA_0109.JPG',
+    '/assets/images/prenup/APA_9785.JPG',
+    '/assets/images/prenup/APA_9774.JPG',
+    '/assets/images/prenup/APA_9771.JPG',
+    '/assets/images/prenup/APA_9637.JPG',
+    '/assets/images/prenup/DSC03803%20-%20Copy.JPG',
+    '/assets/images/prenup/DSC03673.JPG',
+    '/assets/images/prenup/DSC03546.JPG',
+    '/assets/images/prenup/DSC03495.JPG',
+    '/assets/images/prenup/DSC03402.JPG',
+    '/assets/images/prenup/DSC03364.JPG',
+    '/assets/images/prenup/DSC03316.JPG',
+    '/assets/images/prenup/DSC03006.JPG',
+    '/assets/images/prenup/DSC02853.JPG',
+    '/assets/images/prenup/DSC02783.JPG',
+    '/assets/images/prenup/DSC02765.JPG'
   ]
 
   // Gallery images for horizontal scroll (all unused images + top and bottom from love story)
   const galleryImages = [
-    '/assets/images/prenup/APA_0744.JPG',
-    '/assets/images/prenup/APA_0809.JPG',
-    '/assets/images/prenup/APA_0812.JPG',
-    '/assets/images/prenup/APA_0851.JPG',
-    '/assets/images/prenup/APA_0868.JPG',
-    '/assets/images/prenup/APA_0871.JPG',
-    '/assets/images/prenup/APA_0880.JPG',
+    '/assets/images/prenup/DSC02765.JPG',
+    '/assets/images/prenup/DSC02783.JPG',
+    '/assets/images/prenup/DSC02853.JPG',
+    '/assets/images/prenup/DSC03006.JPG',
+    '/assets/images/prenup/DSC03316.JPG',
+    '/assets/images/prenup/DSC03364.JPG',
+    '/assets/images/prenup/DSC03402.JPG',
+    '/assets/images/prenup/DSC03495.JPG',
+    '/assets/images/prenup/DSC03546.JPG',
+    '/assets/images/prenup/DSC03673.JPG',
+    '/assets/images/prenup/DSC03803%20-%20Copy.JPG',
+    '/assets/images/prenup/APA_9637.JPG',
+    '/assets/images/prenup/APA_9771.JPG',
+    '/assets/images/prenup/APA_9774.JPG',
+    '/assets/images/prenup/APA_9785.JPG',
+    '/assets/images/prenup/APA_0109.JPG',
+    '/assets/images/prenup/APA_0141.JPG',
+    '/assets/images/prenup/APA_0177.JPG',
+    '/assets/images/prenup/APA_0215.JPG',
+    '/assets/images/prenup/APA_0244.JPG',
+    '/assets/images/prenup/APA_0259.JPG',
+    '/assets/images/prenup/APA_0326.JPG',
+    '/assets/images/prenup/APA_0331.JPG',
+    '/assets/images/prenup/APA_0384.JPG',
+    '/assets/images/prenup/APA_0786%20-%20Copy.JPG',
+    '/assets/images/prenup/APA_0856.JPG',
     '/assets/images/prenup/APA_0891.JPG',
-    '/assets/images/prenup/APA_0914.JPG',
-    '/assets/images/prenup/APA_0947.JPG',
-    '/assets/images/prenup/APA_0970.JPG',
-    '/assets/images/prenup/APA_0977.JPG',
-    '/assets/images/prenup/APA_0998.JPG',
-    '/assets/images/prenup/DSC02736.JPG',
-    '/assets/images/prenup/DSC02739.JPG',
-    '/assets/images/prenup/DSC02749.JPG',
-    '/assets/images/prenup/DSC02761.JPG',
-    '/assets/images/prenup/DSC02775.JPG',
-    '/assets/images/prenup/DSC02798.JPG',
-    '/assets/images/prenup/DSC02804.JPG',
-    '/assets/images/prenup/APA_0788.JPG'
+    '/assets/images/prenup/APA_0895.JPG'
   ]
 
   // Polaroid images for the scrollable container
@@ -386,19 +407,19 @@ const Moments = () => {
     setSelectedImageIndex(index)
   }
 
-  // Gallery lightbox navigation
+  // Gallery lightbox navigation - uses galleryImages to match gallery order
   const handleGalleryPrevious = () => {
     if (selectedImageIndex !== null && selectedImageIndex > 0) {
       const newIndex = selectedImageIndex - 1
-      setSelectedImage(lightboxImages[newIndex])
+      setSelectedImage(galleryImages[newIndex])
       setSelectedImageIndex(newIndex)
     }
   }
 
   const handleGalleryNext = () => {
-    if (selectedImageIndex !== null && selectedImageIndex < lightboxImages.length - 1) {
+    if (selectedImageIndex !== null && selectedImageIndex < galleryImages.length - 1) {
       const newIndex = selectedImageIndex + 1
-      setSelectedImage(lightboxImages[newIndex])
+      setSelectedImage(galleryImages[newIndex])
       setSelectedImageIndex(newIndex)
     }
   }
@@ -472,7 +493,7 @@ const Moments = () => {
         <div className="relative z-20 w-full flex flex-col items-center">
           <div className="relative w-screen group cursor-pointer" onClick={handleVideoOpen}>
             <img 
-              src="/assets/images/prenup/APA_0744.JPG" 
+              src="/assets/images/prenup/APA_0895.JPG" 
               alt="Index image" 
               className="w-full h-auto object-cover"
               loading="eager"
@@ -517,14 +538,15 @@ const Moments = () => {
            {/* FERL1949 Photo */}
            <div ref={ferl1949Ref} className="relative z-20 w-full max-w-2xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 flex justify-center">
              <img
-               src="/assets/images/prenup/APA_0759.JPG"
+               src="/assets/images/prenup/APA_0331.JPG"
                alt="Love story photo"
                className="w-full h-auto object-cover cursor-pointer"
                loading="lazy"
                decoding="async"
                onClick={() => {
-                 setSelectedImage('/assets/images/prenup/APA_0759.JPG')
-                 setSelectedImageIndex(lightboxImages.indexOf('/assets/images/prenup/APA_0759.JPG'))
+                 const imageIndex = galleryImages.indexOf('/assets/images/prenup/APA_0331.JPG')
+                 setSelectedImage('/assets/images/prenup/APA_0331.JPG')
+                 setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
                }}
              />
            </div>
@@ -533,14 +555,15 @@ const Moments = () => {
            {/* FERL2103 Photo */}
            <div ref={photo2013Ref} className="relative z-20 w-full max-w-2xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 flex justify-center mx-auto">
              <img
-               src="/assets/images/prenup/APA_0809.JPG"
+               src="/assets/images/prenup/APA_0259.JPG"
                alt="2013 Photo"
                className="w-full h-auto object-cover cursor-pointer"
                loading="lazy"
                decoding="async"
                onClick={() => {
-                 setSelectedImage('/assets/images/prenup/APA_0809.JPG')
-                 setSelectedImageIndex(lightboxImages.indexOf('/assets/images/prenup/APA_0809.JPG'))
+                 const imageIndex = galleryImages.indexOf('/assets/images/prenup/APA_0259.JPG')
+                 setSelectedImage('/assets/images/prenup/APA_0259.JPG')
+                 setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
                }}
              />
            </div>
@@ -642,7 +665,7 @@ const Moments = () => {
                          style={{
                            width: '300px',
                            height: '300px',
-                           borderRadius: '8px'
+                           borderRadius: '0'
                          }}
                          width="300"
                          height="300"
@@ -651,8 +674,7 @@ const Moments = () => {
                          fetchPriority={index < 4 ? "high" : index < 8 ? "auto" : "low"}
                          decoding="async"
                          onClick={() => {
-                           const imageIndex = lightboxImages.indexOf(image)
-                           handleGalleryImageClick(image, imageIndex)
+                           handleGalleryImageClick(image, index)
                          }}
                        />
                      ))}
@@ -676,14 +698,15 @@ const Moments = () => {
            <div ref={endPhoto4Ref} className="relative z-20 w-screen mt-8">
              <div className="relative">
                <img
-                 src="/assets/images/prenup/APA_0788.JPG"
+                 src="/assets/images/prenup/APA_9785.JPG"
                  alt="Love story photo"
                  className="w-full h-auto object-cover cursor-pointer"
                  loading="lazy"
                  decoding="async"
                  onClick={() => {
-                   setSelectedImage('/assets/images/prenup/APA_0788.JPG')
-                   setSelectedImageIndex(lightboxImages.indexOf('/assets/images/prenup/APA_0788.JPG'))
+                   const imageIndex = galleryImages.indexOf('/assets/images/prenup/APA_9785.JPG')
+                   setSelectedImage('/assets/images/prenup/APA_9785.JPG')
+                   setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
                  }}
                />
              </div>
@@ -712,7 +735,7 @@ const Moments = () => {
             navigate('/')
           }
         }}
-        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#191970] text-white rounded-full shadow-lg hover:bg-[#191970]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
+        className="fixed bottom-12 right-6 z-[100] w-14 h-14 bg-[#333333] text-white rounded-full shadow-lg hover:bg-[#333333]/80 hover:scale-110 transition-all duration-300 flex items-center justify-center group"
         aria-label="Back to home"
         style={{ pointerEvents: 'auto' }}
       >
@@ -771,7 +794,7 @@ const Moments = () => {
       {/* Image Lightbox Modal */}
       {selectedImage && createPortal(
         <div
-          className="fixed inset-0 z-[10000] flex items-center justify-center"
+          className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/60"
           onClick={handleGalleryClose}
         >
           {/* Close Icon - Top Left */}
@@ -799,7 +822,7 @@ const Moments = () => {
           )}
 
           {/* Next Button - Right */}
-          {selectedImageIndex !== null && selectedImageIndex < lightboxImages.length - 1 && (
+          {selectedImageIndex !== null && selectedImageIndex < galleryImages.length - 1 && (
             <button
               onClick={(e) => {
                 e.stopPropagation()

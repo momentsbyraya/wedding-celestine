@@ -190,9 +190,10 @@ const NavIndex = ({ onOpenRSVP }) => {
     <div className="min-h-screen w-full flex items-center justify-center bg-gradient-to-b from-white to-gray-50 overflow-hidden relative">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-no-repeat"
         style={{
           backgroundImage: 'url(/assets/images/graphics/bg-1.png)',
+          backgroundPosition: 'left center',
           opacity: 0.3
         }}
       />
@@ -362,10 +363,10 @@ const NavIndex = ({ onOpenRSVP }) => {
               }}
             >
               <img 
-                src="/assets/images/prenup/APA_0426.JPG" 
+                src="/assets/images/prenup/APA_0856.JPG" 
                 alt="Prenup photo" 
                 className="w-full object-cover"
-                style={{ display: 'block', aspectRatio: '1 / 1', width: '100%', height: 'auto', pointerEvents: 'none' }}
+                style={{ display: 'block', aspectRatio: '1 / 1', width: '100%', height: 'auto', pointerEvents: 'none', objectPosition: '30% center' }}
               />
               
               {/* Flower 3 - Bottom Left (above the image) */}
@@ -427,7 +428,7 @@ const NavIndex = ({ onOpenRSVP }) => {
               }}
             >
               <img 
-                src="/assets/images/prenup/APA_0460.JPG" 
+                src="/assets/images/prenup/APA_9774.JPG" 
                 alt="Prenup photo" 
                 className="w-full h-full object-cover"
                 style={{
@@ -623,10 +624,10 @@ const NavIndex = ({ onOpenRSVP }) => {
               }}
             >
               <img 
-                src="/assets/images/prenup/APA_0494.JPG" 
+                src="/assets/images/prenup/APA_0384.JPG" 
                 alt="Prenup photo" 
                 className="w-full object-cover"
-                style={{ display: 'block', aspectRatio: '1 / 1', width: '100%', height: '100%', pointerEvents: 'none', objectPosition: 'center 80%' }}
+                style={{ display: 'block', aspectRatio: '1 / 1', width: '100%', height: '100%', pointerEvents: 'none', objectPosition: '70% 80%' }}
               />
             </div>
           </div>
@@ -670,7 +671,7 @@ const NavIndex = ({ onOpenRSVP }) => {
               }}
             >
               <img 
-                src="/assets/images/prenup/APA_0577.JPG" 
+                src="/assets/images/prenup/APA_0141.JPG" 
                 alt="Prenup photo" 
                 className="w-full object-cover"
                 style={{ display: 'block', aspectRatio: '1 / 1', width: '100%', height: '100%', pointerEvents: 'none', objectPosition: 'center 85%' }}

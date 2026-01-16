@@ -14,7 +14,6 @@ const Details = () => {
   const navigate = useNavigate()
   const [openFaqIndex, setOpenFaqIndex] = useState(null)
   const [isGiftModalOpen, setIsGiftModalOpen] = useState(false)
-  const [isPhotoUploadModalOpen, setIsPhotoUploadModalOpen] = useState(false)
   const [copiedIndex, setCopiedIndex] = useState(null)
   const sectionRef = useRef(null)
   const backButtonRef = useRef(null)
@@ -450,9 +449,9 @@ const Details = () => {
 
           {/* Wedding Program Schedule Section */}
           <div className="mt-20 relative" style={{
-            backgroundImage: 'url(/assets/images/prenup/APA_0642.JPG)',
+            backgroundImage: 'url(/assets/images/prenup/APA_0649%20-%20Copy.JPG)',
             backgroundSize: 'cover',
-            backgroundPosition: '75% center',
+            backgroundPosition: '55% center',
             backgroundRepeat: 'no-repeat',
             padding: '2rem 0',
             width: '100vw',
@@ -910,10 +909,23 @@ const Details = () => {
                 We'd love to see your photos and videos from our special day! Please use the QR code below to upload your memories.
               </p>
               
+              {/* QR Code Image */}
+              <div className="flex justify-center items-center mb-6">
+                <div className="bg-white p-4 rounded-lg shadow-md">
+                  <img 
+                    src="/assets/images/qr/upload-qr.png" 
+                    alt="Upload QR Code" 
+                    className="w-64 h-64 object-contain"
+                  />
+                </div>
+              </div>
+              
               {/* Upload Photos Button */}
               <div className="flex justify-center items-center mb-6">
-                <button
-                  onClick={() => setIsPhotoUploadModalOpen(true)}
+                <a
+                  href="https://drive.google.com/drive/folders/1Zd4ShX3tKELGK_Vqwb6AXzUEh6VuFT78?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center justify-center hover:opacity-80 transition-all duration-300 group"
                   style={{ 
                     backgroundColor: themeConfig.cssVariables['--accent-bg'],
@@ -932,7 +944,7 @@ const Details = () => {
                     <span className="text-white font-medium text-sm sm:text-base">Upload</span>
                     <ArrowRight className="w-4 h-4 text-white" />
                   </div>
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -941,7 +953,7 @@ const Details = () => {
 
       {/* FAQ Section - Outside container */}
       <div className="relative z-20 mt-20" style={{
-        backgroundImage: 'url(/assets/images/prenup/APA_0704.JPG)',
+        backgroundImage: 'url(/assets/images/prenup/APA_0244.JPG)',
         backgroundSize: 'cover',
         backgroundPosition: '68% center',
         backgroundRepeat: 'no-repeat',
@@ -1100,50 +1112,6 @@ const Details = () => {
       document.body
     )}
 
-    {/* Photo Upload Modal */}
-    {isPhotoUploadModalOpen && createPortal(
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-        {/* Backdrop */}
-        <div 
-          className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-          onClick={() => setIsPhotoUploadModalOpen(false)}
-        />
-        
-        {/* Modal Content */}
-        <div className="relative bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto">
-          {/* Header */}
-          <div className="sticky top-0 bg-white z-10 flex items-center justify-between p-6 border-b border-gray-200 rounded-t-2xl">
-            <h3 className="text-2xl sm:text-3xl alice-regular font-black text-gray-800" style={{ fontWeight: 900 }}>Upload</h3>
-            <button
-              onClick={() => setIsPhotoUploadModalOpen(false)}
-              className="text-gray-500 hover:text-gray-800 transition-colors duration-200"
-            >
-              <X className="w-6 h-6" />
-            </button>
-          </div>
-
-          {/* Content */}
-          <div className="p-6">
-            <div className="flex flex-col items-center justify-center">
-              <p className="text-base sm:text-lg font-albert text-gray-700 mb-6 text-center max-w-2xl">
-                Scan the QR code below to upload your photos and videos from our wedding day. We'd love to see your memories!
-              </p>
-              {/* QR Code Placeholder - Replace with actual QR code image */}
-              <div className="flex items-center justify-center bg-gray-100 rounded-lg p-8">
-                <div className="text-center">
-                  <p className="text-gray-500 mb-4">QR Code for Photo Upload</p>
-                  <div className="w-64 h-64 bg-gray-200 rounded-lg flex items-center justify-center">
-                    <Camera className="w-16 h-16 text-gray-400" />
-                  </div>
-                  <p className="text-sm text-gray-500 mt-4">Replace this with your actual QR code image</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>,
-      document.body
-    )}
     
     {/* Back Button - Circular, Bottom Right - Outside section to avoid transform issues */}
     <button
