@@ -742,11 +742,27 @@ const Moments = () => {
             <X className="w-6 h-6 text-white" />
           </button>
 
-          {/* To Be Added Message */}
-          <div className="relative z-10 p-6">
-            <div className="w-full h-[600px] flex items-center justify-center rounded-lg bg-gray-100 text-gray-600 text-2xl font-bold">
-              To Be Added
-            </div>
+          {/* YouTube Video Player */}
+          <div className="relative z-10 w-full h-full flex items-center justify-center p-4" style={{ pointerEvents: 'none' }}>
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/KSPPzvrdFyU?si=nA2owsm0AcwCZZ8x&autoplay=1"
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerPolicy="strict-origin-when-cross-origin"
+              allowFullScreen
+              className="max-w-full max-h-full"
+              style={{ 
+                width: '90%',
+                height: '90%',
+                maxWidth: '1000px',
+                maxHeight: '562px',
+                aspectRatio: '16/9',
+                pointerEvents: 'auto'
+              }}
+            />
           </div>
         </div>,
         document.body

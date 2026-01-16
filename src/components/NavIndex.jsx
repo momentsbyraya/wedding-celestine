@@ -572,8 +572,9 @@ const NavIndex = ({ onOpenRSVP }) => {
               cursor: 'pointer'
             }}
           >
-            <span className="nanum-myeongjo-regular text-[#333333] text-center underline" style={{ 
-              fontSize: 'clamp(0.625rem, 1vw, 1rem)', 
+            <span className="nanum-myeongjo-regular text-center underline pulsating-moments" style={{ 
+              fontSize: 'clamp(0.75rem, 1.2vw, 1.25rem)', 
+              color: '#008796',
               textDecorationThickness: '1px', 
               textUnderlineOffset: '0.15em',
               margin: 0,

@@ -28,8 +28,10 @@ const Entourage = () => {
   const secondarySponsorsRef = useRef(null)
   const bestmanRef = useRef(null)
   const maidOfHonorRef = useRef(null)
+  const bibleBearerRef = useRef(null)
   const ringBearerRef = useRef(null)
-  const flowerGirlRef = useRef(null)
+  const coinBearerRef = useRef(null)
+  const flowerBoysRef = useRef(null)
 
   useEffect(() => {
     // Set initial hidden states to prevent glimpse
@@ -197,23 +199,22 @@ const Entourage = () => {
       }
     }
 
-    // Ring Bearer and Flower Girl - animate each name one after the other
-    if (ringBearerRef.current && flowerGirlRef.current) {
-      const ringBearerNames = ringBearerRef.current.querySelectorAll('p.font-poppins')
-      const flowerGirlNames = flowerGirlRef.current.querySelectorAll('p.font-poppins')
-      
-      // Combine all names and animate sequentially
+    // Bible Bearer, Ring Bearer, Coin Bearer, and Flower Boys - animate each name one after the other
+    const bearerRefs = [bibleBearerRef, ringBearerRef, coinBearerRef, flowerBoysRef].filter(ref => ref.current)
+    if (bearerRefs.length > 0) {
       const allNames = []
-      if (ringBearerNames) allNames.push(...Array.from(ringBearerNames))
-      if (flowerGirlNames) allNames.push(...Array.from(flowerGirlNames))
+      bearerRefs.forEach(ref => {
+        const names = ref.current.querySelectorAll('p.font-poppins')
+        if (names) allNames.push(...Array.from(names))
+      })
       
       if (allNames.length > 0) {
-        const pairContainer = ringBearerRef.current.parentElement
-        if (pairContainer) {
+        const container = bearerRefs[0].current.parentElement
+        if (container) {
           gsap.set(allNames, { opacity: 0, y: 20 })
-      ScrollTrigger.create({
-            trigger: pairContainer,
-        start: "top 80%",
+          ScrollTrigger.create({
+            trigger: container,
+            start: "top 80%",
             onEnter: () => {
               gsap.to(allNames, {
                 opacity: 1,
@@ -223,8 +224,8 @@ const Entourage = () => {
                 stagger: 0.1
               })
             },
-        toggleActions: "play none none reverse"
-      })
+            toggleActions: "play none none reverse"
+          })
         }
       }
     }
@@ -239,8 +240,10 @@ const Entourage = () => {
   const secondarySponsors = entourage.entourageList.find(item => item.category === "Secondary Sponsors")
   const bestman = entourage.entourageList.find(item => item.category === "Bestman")
   const maidOfHonor = entourage.entourageList.find(item => item.category === "Maid of Honor")
+  const bibleBearer = entourage.entourageList.find(item => item.category === "Bible Bearer")
   const ringBearer = entourage.entourageList.find(item => item.category === "Ring Bearer")
-  const flowerGirl = entourage.entourageList.find(item => item.category === "Flower Girl")
+  const coinBearer = entourage.entourageList.find(item => item.category === "Coin Bearer")
+  const flowerBoys = entourage.entourageList.find(item => item.category === "Flower Boys")
 
   return (
     <>
@@ -434,33 +437,63 @@ const Entourage = () => {
               </div>
             )}
 
-            {/* Ring Bearer and Flower Girl */}
-            {(ringBearer || flowerGirl) && (
+            {/* Bible Bearer, Ring Bearer, Coin Bearer, and Flower Boys */}
+            {(bibleBearer || ringBearer || coinBearer || flowerBoys) && (
               <div className="mb-6">
-                <div className="flex flex-row gap-4 sm:gap-6 justify-center items-center mt-6">
-                  {/* Ring Bearer */}
-                  {ringBearer && (
-                    <div ref={ringBearerRef} className="flex-1">
-                      <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-right" style={{ color: '#006666' }}>Ring Bearer</p>
-                      {ringBearer.names && ringBearer.names.map((name, index) => (
-                        <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-right">
-                          {name}
-                        </p>
-                      ))}
-                    </div>
-                  )}
+                <div className="flex flex-row gap-4 sm:gap-6 justify-center items-start mt-6">
+                  {/* Left Column */}
+                  <div className="flex-1 space-y-6">
+                    {/* Bible Bearer */}
+                    {bibleBearer && (
+                      <div ref={bibleBearerRef}>
+                        <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-right" style={{ color: '#006666' }}>Bible Bearer</p>
+                        {bibleBearer.names && bibleBearer.names.map((name, index) => (
+                          <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-right">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
 
-                  {/* Flower Girl */}
-                  {flowerGirl && (
-                    <div ref={flowerGirlRef} className="flex-1">
-                      <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-left" style={{ color: '#006666' }}>Flower Girl</p>
-                      {flowerGirl.names && flowerGirl.names.map((name, index) => (
-                        <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-left">
-                          {name}
-                        </p>
-                      ))}
-                    </div>
-                  )}
+                    {/* Ring Bearer */}
+                    {ringBearer && (
+                      <div ref={ringBearerRef}>
+                        <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-right" style={{ color: '#006666' }}>Ring Bearer</p>
+                        {ringBearer.names && ringBearer.names.map((name, index) => (
+                          <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-right">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Right Column */}
+                  <div className="flex-1 space-y-6">
+                    {/* Coin Bearer */}
+                    {coinBearer && (
+                      <div ref={coinBearerRef}>
+                        <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-left" style={{ color: '#006666' }}>Coin Bearer</p>
+                        {coinBearer.names && coinBearer.names.map((name, index) => (
+                          <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-left">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+
+                    {/* Flower Boys */}
+                    {flowerBoys && (
+                      <div ref={flowerBoysRef}>
+                        <p className="text-[20px] sm:text-lg imperial-script-regular mb-2 text-left" style={{ color: '#006666' }}>Flower Boys</p>
+                        {flowerBoys.names && flowerBoys.names.map((name, index) => (
+                          <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-left">
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
             )}

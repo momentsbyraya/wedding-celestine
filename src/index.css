@@ -451,4 +451,21 @@ body {
       transform: rotate(1deg) scale(1.2);
     }
   }
+}
+
+/* Pulsating Moments Animation */
+@keyframes pulsate {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.9;
+  }
+}
+
+.pulsating-moments {
+  animation: pulsate 2s ease-in-out infinite;
+  display: inline-block;
 } 
