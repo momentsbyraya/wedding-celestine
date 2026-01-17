@@ -33,6 +33,7 @@ const Moments = () => {
   const endPhoto4Ref = useRef(null)
   const ry211ImageRef = useRef(null)
   const photo2013Ref = useRef(null)
+  const finalParagraphRef = useRef(null)
   const [selectedImage, setSelectedImage] = useState(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState(null)
   const [isVideoOpen, setIsVideoOpen] = useState(false)
@@ -219,12 +220,44 @@ const Moments = () => {
       }, 800) // Delay to allow page animation to complete
     }
 
-    // Scroll animations for elements
+    // Scroll animations for paragraphs with slide-in effect
+    const paragraphRefs = [
+      { ref: secondParagraphRef, direction: 'left' },
+      { ref: thirdParagraphRef, direction: 'right' },
+      { ref: finalParagraphRef, direction: 'left' }
+    ]
+
+    paragraphRefs.forEach(({ ref, direction }) => {
+      if (ref.current) {
+        const xValue = direction === 'left' ? -50 : 50
+        gsap.fromTo(
+          ref.current,
+          {
+            opacity: 0,
+            x: xValue,
+            y: 30
+          },
+          {
+            opacity: 1,
+            x: 0,
+            y: 0,
+            duration: 0.8,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: ref.current,
+              start: "top 85%",
+              end: "top 50%",
+              toggleActions: "play none none none"
+            }
+          }
+        )
+      }
+    })
+
+    // Scroll animations for other elements
     const scrollElements = [
-      { ref: secondParagraphRef },
       { ref: textBeforeImagesRef },
       { ref: polaroidContainerRef },
-      { ref: thirdParagraphRef },
       { ref: ferl1949Ref },
       { ref: fourthParagraphRef },
       { ref: threePhotosRowRef },
@@ -509,7 +542,7 @@ const Moments = () => {
           
           {/* Our Story Title */}
           <div ref={titleRef} className="w-full max-w-4xl text-center pt-12 pb-6 px-4">
-            <span className="nanum-myeongjo-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl inline-block" style={{ color: '#191970' }}>OUR</span>
+            <span className="nanum-myeongjo-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl inline-block" style={{ color: '#171717' }}>OUR</span>
             <span 
               className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block ml-2" 
               style={{ 
@@ -553,7 +586,7 @@ const Moments = () => {
            </div>
 
            {/* Story text after first photo */}
-           <div className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8">
+           <div ref={secondParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
                  Life led them down separate journeys but fate had other plans. Many years later, as she prepared to drive her first car, her father called upon the groom to lend a hand.
@@ -578,7 +611,7 @@ const Moments = () => {
             </div>
 
            {/* Story text after second photo */}
-           <div className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8">
+           <div ref={thirdParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
                  That driving lesson blossomed into a beautiful connection filled with laughter, shared dreams, and rediscovery. Over the past five years, they have not only celebrated milestones but have also faced challenges that have made them better individuals. Supporting one another through thick and thin, they have both grown stronger and more compassionate, embodying the true essence of partnership.
@@ -713,7 +746,7 @@ const Moments = () => {
            </div>
 
            {/* Story text before final photo */}
-           <div className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 mx-auto">
+           <div ref={finalParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 mx-auto">
              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
                <p className="mb-4">
                  Join us in celebrating their extraordinary journey—a tale of serendipity, unexpected love, and the joy of two hearts making each other better. Together, they are thrilled to say, "I do," as they embrace a future full of promise and adventure.

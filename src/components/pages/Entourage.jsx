@@ -406,7 +406,7 @@ const Entourage = () => {
             {secondarySponsors && (
               <div ref={secondarySponsorsRef} className="mb-6">
                 <h3 className="text-[16px] sm:text-lg md:text-xl lg:text-2xl imperial-script-regular mb-6 text-center" style={{ color: '#006666' }}>Secondary Sponsors</h3>
-                
+
                 {/* Bestman and Maid of Honor */}
                 <div className="flex flex-row gap-4 sm:gap-6 justify-center items-center mb-6">
                   {/* Bestman */}
@@ -465,54 +465,54 @@ const Entourage = () => {
             {(bibleBearer || ringBearer || coinBearer || flowerBoys) && (
               <div className="mb-6">
                 <div className="flex flex-col gap-6 justify-center items-center mt-6">
-                  {/* Bible Bearer */}
-                  {bibleBearer && (
-                    <div ref={bibleBearerRef}>
+                    {/* Bible Bearer */}
+                    {bibleBearer && (
+                      <div ref={bibleBearerRef}>
                       <p className="text-[16px] sm:text-lg md:text-xl lg:text-2xl imperial-script-regular mb-2 text-center" style={{ color: '#006666' }}>Bible Bearer</p>
-                      {bibleBearer.names && bibleBearer.names.map((name, index) => (
+                        {bibleBearer.names && bibleBearer.names.map((name, index) => (
                         <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
-                          {name}
-                        </p>
-                      ))}
-                    </div>
-                  )}
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
 
-                  {/* Ring Bearer */}
-                  {ringBearer && (
-                    <div ref={ringBearerRef}>
+                    {/* Ring Bearer */}
+                    {ringBearer && (
+                      <div ref={ringBearerRef}>
                       <p className="text-[16px] sm:text-lg md:text-xl lg:text-2xl imperial-script-regular mb-2 text-center" style={{ color: '#006666' }}>Ring Bearer</p>
-                      {ringBearer.names && ringBearer.names.map((name, index) => (
+                        {ringBearer.names && ringBearer.names.map((name, index) => (
                         <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
-                          {name}
-                        </p>
-                      ))}
-                    </div>
-                  )}
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
 
-                  {/* Coin Bearer */}
-                  {coinBearer && (
-                    <div ref={coinBearerRef}>
+                    {/* Coin Bearer */}
+                    {coinBearer && (
+                      <div ref={coinBearerRef}>
                       <p className="text-[16px] sm:text-lg md:text-xl lg:text-2xl imperial-script-regular mb-2 text-center" style={{ color: '#006666' }}>Coin Bearer</p>
-                      {coinBearer.names && coinBearer.names.map((name, index) => (
+                        {coinBearer.names && coinBearer.names.map((name, index) => (
                         <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
-                          {name}
-                        </p>
-                      ))}
-                    </div>
-                  )}
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
 
-                  {/* Flower Boys */}
-                  {flowerBoys && (
-                    <div ref={flowerBoysRef}>
+                    {/* Flower Boys */}
+                    {flowerBoys && (
+                      <div ref={flowerBoysRef}>
                       <p className="text-[16px] sm:text-lg md:text-xl lg:text-2xl imperial-script-regular mb-2 text-center" style={{ color: '#006666' }}>Flower Boys</p>
-                      {flowerBoys.names && flowerBoys.names.map((name, index) => (
+                        {flowerBoys.names && flowerBoys.names.map((name, index) => (
                         <p key={index} className="text-[10px] sm:text-sm md:text-base lg:text-lg font-poppins uppercase text-[#333333] whitespace-nowrap overflow-hidden text-ellipsis text-center">
-                          {name}
-                        </p>
-                      ))}
-                    </div>
-                  )}
-                </div>
+                            {name}
+                          </p>
+                        ))}
+                      </div>
+                    )}
+                  </div>
               </div>
             )}
 
