@@ -4,7 +4,6 @@ import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
-import { loveStory } from '../../data'
 import { useAudio } from '../../contexts/AudioContext'
 
 // Register ScrollTrigger plugin

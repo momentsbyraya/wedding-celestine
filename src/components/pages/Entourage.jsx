@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft } from 'lucide-react'
-import { themeConfig } from '../../config/themeConfig'
 import { entourage } from '../../data'
 
 // Register ScrollTrigger plugin
@@ -279,8 +278,8 @@ const Entourage = () => {
         style={{ 
           opacity: 0, 
           transform: 'translateX(100%)',
-          paddingLeft: '2rem',
-          paddingRight: '2rem',
+          paddingLeft: '1rem',
+          paddingRight: '1rem',
           paddingTop: '4rem',
           paddingBottom: '4rem'
         }}

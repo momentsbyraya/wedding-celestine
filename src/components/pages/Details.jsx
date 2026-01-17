@@ -3,9 +3,9 @@ import { useNavigate } from 'react-router-dom'
 import { createPortal } from 'react-dom'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { MapPin, Clock, ArrowLeft, ArrowRight, ChevronDown, X, Copy, Check, UtensilsCrossed, Palette, Users, Mail, Baby, Car, Camera, Gift, Heart } from 'lucide-react'
+import { MapPin, Clock, ArrowLeft, ArrowRight, ChevronDown, X, UtensilsCrossed, Palette, Users, Mail, Baby, Car, Camera, Gift, Heart } from 'lucide-react'
 import { themeConfig } from '../../config/themeConfig'
-import { venues as venuesData, images, dresscode, faq as faqData, paymentMethods as paymentMethodsData } from '../../data'
+import { venues as venuesData, dresscode, faq as faqData, paymentMethods as paymentMethodsData } from '../../data'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
@@ -449,7 +449,7 @@ const Details = () => {
 
           {/* Wedding Program Schedule Section */}
           <div className="mt-20 relative" style={{
-            backgroundImage: 'url(/assets/images/prenup/APA_0649%20-%20Copy.JPG)',
+            backgroundImage: 'url(/assets/images/prenup/APA_9774.JPG)',
             backgroundSize: 'cover',
             backgroundPosition: '55% center',
             backgroundRepeat: 'no-repeat',
@@ -458,25 +458,32 @@ const Details = () => {
             marginLeft: 'calc(-50vw + 50%)',
             marginRight: 'calc(-50vw + 50%)'
           }}>
+            {/* Teal Blue Overlay */}
+            <div 
+              className="absolute inset-0 z-0"
+              style={{
+                backgroundColor: `rgba(0, 128, 128, 0.30)` // 30% opacity teal blue
+              }}
+            />
             {/* Program Title */}
-            <div ref={scheduleTitleRef} className="text-center mb-12 sm:mb-16">
-              <div>
-                <h3 className="relative inline-block px-6 py-3">
-                  <span 
-                    className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block leading-none" 
-                    style={{ 
-                      lineHeight: '0.8',
-                      color: '#f5f5f0'
-                    }}
-                  >
-                    Program
-                  </span>
-                </h3>
-              </div>
+            <div ref={scheduleTitleRef} className="relative z-10 mb-12 sm:mb-16" style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+              <h3 className="px-6 py-3">
+                <span 
+                  className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl leading-none" 
+                  style={{ 
+                    lineHeight: '0.8',
+                    color: '#f5f5f0',
+                    display: 'block',
+                    textAlign: 'center'
+                  }}
+                >
+                  Program
+                </span>
+              </h3>
             </div>
 
             {/* Vertical Timeline */}
-            <div ref={timelineRef} className="relative max-w-md sm:max-w-xl lg:max-w-2xl w-full mx-auto" style={{ padding: '1rem' }}>
+            <div ref={timelineRef} className="relative max-w-md sm:max-w-xl lg:max-w-2xl w-full mx-auto z-10" style={{ padding: '1rem' }}>
               {/* Central Vertical Line - Dark Grey */}
               <div ref={lineRef} className="absolute left-1/2 top-0 bottom-0 w-px bg-[#666666] transform -translate-x-1/2"></div>
 
@@ -913,7 +920,7 @@ const Details = () => {
               <div className="flex justify-center items-center mb-6">
                 <div className="bg-white p-4 rounded-lg shadow-md">
                   <img 
-                    src="/assets/images/qr/upload-qr.png" 
+                    src="/assets/images/qr/qr-code.png" 
                     alt="Upload QR Code" 
                     className="w-64 h-64 object-contain"
                   />
