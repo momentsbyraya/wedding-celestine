@@ -41,7 +41,13 @@ export default defineConfig({
   plugins: [react(), copyAssetsPlugin()],
   server: {
     port: 3000,
-    open: true
+    open: true,
+    host: true,
+    allowedHosts: [
+      'subadministrative-alice-scrofulously.ngrok-free.dev',
+      '.ngrok-free.dev',
+      '.ngrok.io'
+    ]
   },
   build: {
     outDir: 'dist',
