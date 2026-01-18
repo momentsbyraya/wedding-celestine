@@ -15,6 +15,9 @@ build/
 .env.test.local
 .env.production.local
 
+# Ngrok token
+.ngrok-token
+
 # IDE files
 .vscode/
 .idea/
