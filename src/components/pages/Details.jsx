@@ -962,7 +962,7 @@ const Details = () => {
       <div className="relative z-20 mt-20" style={{
         backgroundImage: 'url(/assets/images/prenup/APA_0244.JPG)',
         backgroundSize: 'cover',
-        backgroundPosition: '68% center',
+        backgroundPosition: 'center 40%',
         backgroundRepeat: 'no-repeat',
         padding: '2rem 0',
         width: '100vw',
