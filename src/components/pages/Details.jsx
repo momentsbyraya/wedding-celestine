@@ -449,9 +449,9 @@ const Details = () => {
 
           {/* Wedding Program Schedule Section */}
           <div className="mt-20 relative" style={{
-            backgroundImage: 'url(/assets/images/prenup/APA_9774.JPG)',
+            backgroundImage: 'url(/assets/images/prenup/APA_0649%20-%20Copy.JPG)',
             backgroundSize: 'cover',
-            backgroundPosition: '55% center',
+            backgroundPosition: 'center',
             backgroundRepeat: 'no-repeat',
             padding: '2rem 0',
             width: '100vw',
