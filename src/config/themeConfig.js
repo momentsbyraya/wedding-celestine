@@ -4,7 +4,7 @@ export const themeConfig = {
     backgrounds: {
         primary: 'bg-gray-900',        // Main dark background
         secondary: 'bg-gray-800',      // Secondary dark background (modals, cards)
-        accent: 'bg-[#008080]',      // Accent background (Teal Green)
+        accent: 'bg-[#800000]',      // Accent background (Maroon)
         light: 'bg-white/50',          // Light overlay backgrounds
         theme: 'bg-[#dee5ed]',        // Custom theme color
         crumpledPaper: 'bg-[url("/assets/images/crumpled-paper.png")] bg-cover bg-center bg-no-repeat', // Crumpled paper background
@@ -12,9 +12,9 @@ export const themeConfig = {
 
     // Text Colors
     text: {
-        primary: 'text-[#006666]',     // Main heading text color (Dark Green Teal)
+        primary: 'text-[#800000]',     // Main heading text color (Maroon)
         secondary: 'text-gray-300',    // Subheading and body text color
-        accent: 'text-[#008080]',    // Accent text color (Teal Green)
+        accent: 'text-[#800000]',    // Accent text color (Maroon)
         muted: 'text-gray-400',        // Muted text color (icons, small text)
         dark: 'text-wedding-800',      // Dark text for light backgrounds
         theme: 'text-[#ad8369]',      // Custom theme text color
@@ -32,7 +32,7 @@ export const themeConfig = {
 
     // Button Colors
     buttons: {
-        primary: 'bg-[#008080] hover:bg-[#006666]',  // Primary button (Teal Green)
+        primary: 'bg-[#800000] hover:bg-[#660000]',  // Primary button (Maroon)
         secondary: 'border border-gray-600 hover:border-gray-400', // Secondary button
         text: 'text-gray-300 hover:text-white', // Button text color
         theme: 'bg-[#ad8369] hover:bg-[#ad8369]/80', // Custom theme button
@@ -40,7 +40,7 @@ export const themeConfig = {
 
     // Hover Effects
     hover: {
-        primary: 'hover:bg-[#006666]',     // Primary button hover (Dark Teal Green)
+        primary: 'hover:bg-[#660000]',     // Primary button hover (Dark Maroon)
         secondary: 'hover:border-gray-400 hover:text-white', // Secondary button hover
         theme: 'hover:bg-[#ad8369]/80',     // Custom theme hover
     },
@@ -72,11 +72,11 @@ export const themeConfig = {
     cssVariables: {
         '--primary-bg': '#111827',           // #111827 (gray-900)
         '--secondary-bg': '#1f2937',        // #1f2937 (gray-800)
-        '--accent-bg': '#008080',           // #008080 (Teal Green)
-        '--accent-hover': '#006666',        // #006666 (Dark Teal Green Hover)
-        '--primary-text': '#006666',        // #006666 (Dark Green Teal)
+        '--accent-bg': '#800000',           // #800000 (Maroon)
+        '--accent-hover': '#660000',        // #660000 (Dark Maroon Hover)
+        '--primary-text': '#800000',        // #800000 (Maroon)
         '--secondary-text': '#d1d5db',      // #d1d5db (gray-300)
-        '--accent-text': '#008080',         // #008080 (Teal Green)
+        '--accent-text': '#800000',         // #800000 (Maroon)
         '--muted-text': '#9ca3af',          // #9ca3af (gray-400)
         '--border-color': '#C0C0C0',        // #C0C0C0 (Silver)
         '--custom-theme': '#C0C0C0',        // #C0C0C0 (Silver)

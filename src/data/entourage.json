@@ -1,116 +1,116 @@
 {
   "couple": {
     "groom": {
-      "name": "Gil Carlos T. Santiago"
+      "name": "Jon Michael R. Dela Cruz"
     },
     "bride": {
-      "name": "Praise Joy D. Rita"
+      "name": "Sofia Marie A. Santos"
     }
   },
   "parents": {
     "groom": {
-      "father": "Perlito Santos",
-      "mother": "Maria Josefina Santiago"
+      "father": "Roberto Dela Cruz",
+      "mother": "Maria Elena Dela Cruz"
     },
     "bride": {
-      "father": "Edito Rita",
-      "mother": "Maria Salve Rita"
+      "father": "Antonio Santos",
+      "mother": "Carmen Santos"
     }
   },
   "entourageList": [
     {
       "category": "Principal Sponsors",
       "ninong": [
-        "Valentin Domingo",
-        "Roberto Santiago",
-        "Vener Dela Cruz",
-        "Dennis De Guzman",
-        "Crispin Bernabe",
-        "Antonio Lopez",
-        "Dr. Victor Antonio Batanes",
-        "Robert Garcia",
-        "Luisito Bartolome Sr.",
-        "Leopoldo Bulaong",
-        "Michael Simudlan"
+        "Miguel Torres",
+        "Carlos Mendoza",
+        "Fernando Reyes",
+        "Rafael Villanueva",
+        "Eduardo Martinez",
+        "Jose Antonio Garcia",
+        "Dr. Luis Fernando Ramos",
+        "Ricardo Alcantara",
+        "Manuel Cruz Sr.",
+        "Alberto Fernandez",
+        "Rodrigo Bautista"
       ],
       "ninang": [
-        "Merle Domingo",
-        "Aleth Abello",
-        "Jonalen Bueno",
-        "Cecile Santos",
-        "Ruby Rose Santos",
-        "Celerina Dolana",
-        "Atty. Nicole Aya Dimanlig",
-        "Ana Marie Pabustan",
-        "Melanie Camua",
-        "Cristy Bernaldez",
-        "Virginia Domingo"
+        "Isabel Torres",
+        "Maria Cristina Abad",
+        "Patricia Buenaventura",
+        "Rosa Martinez",
+        "Angelica Santos",
+        "Carmen Dela Rosa",
+        "Atty. Maria Elena Castillo",
+        "Catherine Pineda",
+        "Monica Reyes",
+        "Grace Fernandez",
+        "Lucia Villanueva"
       ]
     },
     {
       "category": "Secondary Sponsors",
       "groomsmen": [
-        "Aris Rufino",
-        "Owen Bernardo",
-        "Jomar Cajusay",
-        "Mike Dolona",
-        "Bengie Untalan",
-        "Zaki Xyrus Bernardo",
-        "Jason Camposano"
+        "Mark Anthony Rivera",
+        "Christian Mendoza",
+        "Jose Miguel Cruz",
+        "Michael Dela Paz",
+        "Benedicto Tan",
+        "Zachary Xavier Reyes",
+        "Jonathan Martinez"
       ],
       "bridesmaid": [
-        "Hazel Domingo",
-        "Athalia Fernando",
-        "Princess Airah Cabang",
-        "Dianne Ross Olidan",
-        "Lyzette Macalalad",
-        "Frelin Dolona",
-        "Katrina Gibo"
+        "Isabella Torres",
+        "Amanda Fernandez",
+        "Patricia Ann Cabrera",
+        "Diana Rose Ocampo",
+        "Lynette Macapagal",
+        "Francesca Dela Paz",
+        "Katherine Gomez"
       ]
     },
     {
       "category": "Bestman",
       "names": [
-        "Carlo Santiago"
+        "Daniel Dela Cruz"
       ]
     },
     {
       "category": "Maid of Honor",
       "names": [
-        "Precious Abby Rita"
+        "Maria Isabel Santos"
       ]
     },
     {
       "category": "Bible Bearer",
       "names": [
-        "Prince Cael Untalan"
+        "Gabriel Tan"
       ]
     },
     {
       "category": "Ring Bearer",
       "names": [
-        "John Eliyah Rita"
+        "Ethan James Santos"
       ]
     },
     {
       "category": "Coin Bearer",
       "names": [
-        "Timothy Soledad Million"
+        "Nathaniel Soledad Cruz"
       ]
     },
     {
       "category": "Flower Boys",
       "names": [
-        "Aldrian Alvarez",
-        "Anthony Dimanlig",
-        "Jeffrey Ford Fortin"
+        "Adrian Alvarez",
+        "Andrew Dimaculangan",
+        "Justin Ford Reyes"
       ]
     },
     {
       "category": "Here comes the bride",
       "names": [
-        "Tita Corazon Domingo",
-        "Victor Domingo"
+        "Tita Rosario Torres",
+        "Vincent Torres"
       ]
     }
   ]

@@ -1,0 +1,313 @@
+/* NavIndex Component Styles */
+
+/* Background */
+.nav-index-bg {
+  background-image: url(/assets/images/graphics/textured-bg-2.png);
+  background-position: center;
+  background-size: cover;
+  opacity: 1;
+}
+
+.nav-index-overlay {
+  background-color: rgba(255, 255, 255, 0);
+}
+
+/* Envelope Container */
+.envelope-container {
+  margin-bottom: 2.5vw;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Flower 1 */
+.flower-1-container {
+  transform: translate(-20%, 10%) rotate(-25deg);
+  opacity: 0;
+  scale: 0;
+}
+
+/* Container with Oval and Polaroid */
+.oval-polaroid-container {
+  margin-bottom: 2.5vw;
+  margin-top: -27vw;
+}
+
+/* Oval Container */
+.oval-container {
+  width: 42vw;
+  height: 55vw;
+  background-color: #f5f5f0;
+  background-image: url(/assets/images/graphics/textured-bg-2.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+}
+
+.oval-border {
+  border: 1px solid var(--accent-hover, #660000);
+}
+
+/* Oval Text Styles */
+.oval-text-for {
+  font-size: clamp(0.625rem, 1vw, 1rem);
+}
+
+.oval-text-entourage {
+  color: var(--accent-text, #800000);
+  font-size: clamp(1.8rem, 4.5vw, 4.5rem);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+.oval-text-click {
+  font-size: clamp(0.625rem, 0.9vw, 0.95rem);
+}
+
+/* Polaroid Container Wrapper */
+.polaroid-wrapper {
+  z-index: 2;
+  margin-bottom: -3.33vw;
+  margin-top: 2.5vw;
+  margin-left: 1.67vw;
+}
+
+/* Flower 4 */
+.flower-4 {
+  width: 25vw;
+  top: -25%;
+  right: -25%;
+  z-index: 0;
+  opacity: 0;
+  scale: 0;
+  pointer-events: none;
+}
+
+/* Polaroid Image Container */
+.polaroid-container {
+  width: 30vw;
+  border-top: 1.2vw solid white;
+  border-left: 1.2vw solid white;
+  border-right: 1.2vw solid white;
+  border-bottom: 5vw solid white;
+  padding: 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: rotate(5deg);
+  z-index: 1;
+  margin-top: 6vw;
+  opacity: 0;
+}
+
+.polaroid-image {
+  display: block;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: auto;
+  pointer-events: none;
+  object-position: 30% center;
+}
+
+/* Flower 3 */
+.flower-3 {
+  width: 25vw;
+  transform: translate(-50%, 50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* RSVP and Details Container */
+.rsvp-details-container {
+  z-index: 10;
+  margin-bottom: 2.5vw;
+  margin-top: -13vw;
+  margin-left: 0.83vw;
+}
+
+/* RSVP Container */
+.rsvp-container {
+  width: 50vw;
+  height: 50vw;
+  background-color: #f5f5f0;
+  background-image: url(/assets/images/graphics/bg-3.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transform: rotate(-10deg) translateY(30px);
+  opacity: 0;
+}
+
+.rsvp-photo-container {
+  height: 30%;
+  min-height: 15vw;
+}
+
+.rsvp-photo {
+  transform: scale(1.8) translateX(-15%);
+  object-position: left center;
+}
+
+.rsvp-text-kindly {
+  font-size: clamp(0.625rem, 1vw, 1rem);
+  margin-bottom: 0;
+  color: #f5f5f0;
+}
+
+.rsvp-text-container {
+  color: #f5f5f0;
+  margin-top: 0;
+  line-height: 0.8;
+}
+
+.rsvp-text-r {
+  font-size: clamp(4rem, 9vw, 9rem);
+}
+
+.rsvp-text-svp {
+  font-size: clamp(1.25rem, 2.5vw, 2.5rem);
+}
+
+/* Details Container */
+.details-container {
+  width: 50vw;
+  height: 35vw;
+  background-color: #f5f5f0;
+  border-top: 6px solid var(--accent-bg, #800000);
+  border-bottom: 6px solid var(--accent-bg, #800000);
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+/* Flower 5 */
+.flower-5 {
+  width: 25vw;
+  left: -30%;
+  bottom: -50%;
+  z-index: 1;
+}
+
+/* Details Text */
+.details-text-view {
+  font-size: clamp(0.625rem, 1vw, 1rem);
+  margin-bottom: 0.2vw;
+}
+
+.details-text-details {
+  color: var(--accent-text, #800000);
+  font-size: clamp(2.4rem, 5.8vw, 5.8rem);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+  margin-bottom: 0.2vw;
+  margin-top: 0.5vw;
+  line-height: 0.9;
+}
+
+/* Moments Images Container */
+.moments-images-container {
+  margin-top: 2vw;
+  z-index: 5;
+}
+
+/* Flower 7 */
+.flower-7 {
+  width: 60vw;
+  bottom: -20%;
+  left: -10%;
+  transform: rotate(-25deg);
+  z-index: 0;
+}
+
+/* Moments Text Button */
+.moments-text-button {
+  top: -6vw;
+  right: 0;
+  padding-right: 6vw;
+  padding-left: 1vw;
+  padding-top: 0.5vw;
+  padding-bottom: 0.5vw;
+  z-index: 1000;
+  pointer-events: auto;
+  user-select: none;
+  cursor: pointer;
+}
+
+.moments-text {
+  font-size: clamp(0.75rem, 1.2vw, 1.25rem);
+  color: var(--primary-text, #800000);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+  margin: 0;
+  pointer-events: none;
+}
+
+/* Polaroid Image 1 */
+.polaroid-1 {
+  z-index: 2;
+  opacity: 0;
+}
+
+.polaroid-1-container {
+  width: 30vw;
+  border-top: 1.2vw solid white;
+  border-left: 1.2vw solid white;
+  border-right: 1.2vw solid white;
+  border-bottom: 5vw solid white;
+  padding: 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: rotate(-5deg);
+  z-index: 1;
+}
+
+.polaroid-1-image {
+  display: block;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  object-position: 70% 80%;
+}
+
+/* Polaroid Image 2 */
+.polaroid-2 {
+  z-index: 2;
+  margin-top: 1vw;
+  margin-left: -2vw;
+  opacity: 0;
+}
+
+.polaroid-2-container {
+  width: 30vw;
+  border-top: 1.2vw solid white;
+  border-left: 1.2vw solid white;
+  border-right: 1.2vw solid white;
+  border-bottom: 5vw solid white;
+  padding: 0;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: rotate(5deg);
+  z-index: 1;
+}
+
+.polaroid-2-image {
+  display: block;
+  aspect-ratio: 1 / 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  object-position: center 85%;
+}
+
+/* Flower 8 */
+.flower-8 {
+  width: 20vw;
+  bottom: 0;
+  right: -40%;
+  transform: rotate(-50deg);
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Responsive: Flower-1 rotation for 992px and above */
+@media (min-width: 992px) {
+  .flower-1-rotate {
+    transform: translate(-20%, 10%) rotate(-35deg) !important;
+  }
+}

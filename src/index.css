@@ -16,6 +16,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Carattere:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Caudex:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ballet:wght@400&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=boska@400,500,600,700&display=swap');
 
 /* Canterbury Font */
 @font-face {
@@ -114,6 +116,15 @@
   font-display: swap;
 }
 
+/* Custom Font - Tebranos */
+@font-face {
+  font-family: 'Tebranos';
+  src: url('/assets/fonts/Tebranos-WpAYG.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -190,9 +201,24 @@ body {
     font-family: 'Albert Sans', sans-serif !important;
   }
   
+  .faq-question-bold {
+    font-weight: 600 !important;
+  }
+  
   /* Poppins font */
   .font-poppins {
     font-family: 'Poppins', sans-serif !important;
+  }
+  
+  /* Ballet font */
+  .font-ballet {
+    font-family: 'Ballet', cursive !important;
+  }
+
+  /* Boska font */
+  .font-boska {
+    font-family: 'Boska', serif !important;
+    font-weight: 500 !important;
   }
   
   /* Caudex font */
@@ -270,6 +296,12 @@ body {
 .stylish-calligraphy {
   font-family: "StylishCalligraphy", cursive;
   font-weight: 400;
+  font-style: normal;
+}
+
+.font-tebranos {
+  font-family: "Tebranos", serif;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -451,6 +483,13 @@ body {
       transform: rotate(1deg) scale(1.2);
     }
   }
+
+  /* Flower-1 responsive rotation for 992px and above */
+  @media (min-width: 992px) {
+    .flower-1-rotate {
+      transform: translate(-20%, 10%) rotate(-35deg) !important;
+    }
+  }
 }
 
 /* Pulsating Moments Animation */
@@ -468,4 +507,18 @@ body {
 .pulsating-moments {
   animation: pulsate 2s ease-in-out infinite;
   display: inline-block;
+}
+
+/* Rolling Animation */
+@keyframes roll {
+  0% {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(360deg);
+  }
+}
+
+.rolling-stamp {
+  animation: roll 8s linear infinite;
 } 

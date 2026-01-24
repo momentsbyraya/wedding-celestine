@@ -1,25 +1,25 @@
 {
   "ceremony": {
-    "name": "Alfredos Events Place",
-    "address": "WR9R+CQV",
-    "city": "Pulilan",
-    "state": "Bulacan",
-    "zip": "Philippines",
+    "name": "San Agustin Church",
+    "address": "General Luna St",
+    "city": "Intramuros",
+    "state": "Manila",
+    "zip": "1002, Philippines",
     "time": "3:30 PM",
-    "details": "Schedule: 3:30 PM to 7:30 PM",
-    "googleMapsUrl": "https://maps.app.goo.gl/K5U1RPA6QkfqegNa6?g_st=ipc",
-    "directionsUrl": "https://maps.app.goo.gl/K5U1RPA6QkfqegNa6?g_st=ipc"
+    "details": "Schedule: 3:30 PM to 4:30 PM",
+    "googleMapsUrl": "https://maps.app.goo.gl/SanAgustinChurch",
+    "directionsUrl": "https://maps.app.goo.gl/SanAgustinChurch"
   },
   "reception": {
-    "name": "Alfredos Events Place",
-    "address": "WR9R+CQV", 
-    "city": "Pulilan",
-    "state": "Bulacan",
-    "zip": "Philippines",
-    "time": "3:30 PM",
-    "details": "Schedule: 3:30 PM to 7:30 PM",
-    "landmark": "",
-    "googleMapsUrl": "https://maps.app.goo.gl/K5U1RPA6QkfqegNa6?g_st=ipc",
-    "directionsUrl": "https://maps.app.goo.gl/K5U1RPA6QkfqegNa6?g_st=ipc"
+    "name": "Villa Escudero Gardens",
+    "address": "San Pablo City", 
+    "city": "Quezon",
+    "state": "Laguna",
+    "zip": "4000, Philippines",
+    "time": "5:00 PM",
+    "details": "Schedule: 5:00 PM to 10:00 PM",
+    "landmark": "Garden Reception",
+    "googleMapsUrl": "https://maps.app.goo.gl/VillaEscudero",
+    "directionsUrl": "https://maps.app.goo.gl/VillaEscudero"
   }
 } 
