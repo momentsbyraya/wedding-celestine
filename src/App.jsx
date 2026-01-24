@@ -25,11 +25,11 @@ function AppContent() {
   useEffect(() => {
     const preloadImages = async () => {
       const criticalImages = [
-        // NavIndex images - all prenup photos
-        '/assets/images/prenup/APA_0426.JPG',
-        '/assets/images/prenup/APA_0460.JPG',
-        '/assets/images/prenup/APA_0494.JPG',
-        '/assets/images/prenup/APA_0577.JPG',
+        // NavIndex images - all prenup photos used on home page
+        '/assets/images/prenup/APA_0856.JPG',  // Polaroid image
+        '/assets/images/prenup/APA_9774.JPG',  // RSVP container
+        '/assets/images/prenup/APA_0384.JPG',  // Moments polaroid 1
+        '/assets/images/prenup/APA_0141.JPG',  // Moments polaroid 2
         // NavIndex graphics - all decorative elements
         '/assets/images/graphics/midnight-blue-envelope.png',
         '/assets/images/graphics/flower-1.png',
