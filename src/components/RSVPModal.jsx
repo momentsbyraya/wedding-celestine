@@ -92,7 +92,7 @@ const RSVPModal = ({ isOpen, onClose }) => {
         <div className="p-6">
           <div className="w-full h-[600px] overflow-hidden rounded-lg">
             <iframe
-              src="https://forms.gle/cLDf3hV8h2abxLiG8"
+              src="https://forms.gle/V1hYqW3P9KtUJdsGA"
               title="RSVP Form"
               className="w-full h-full border-0"
               style={{ minHeight: '600px' }}

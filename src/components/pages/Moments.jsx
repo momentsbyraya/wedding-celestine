@@ -5,6 +5,8 @@ import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { ArrowLeft, ArrowRight, X, ChevronLeft, ChevronRight, Play } from 'lucide-react'
 import { useAudio } from '../../contexts/AudioContext'
+import GradientLayer from '../GradientLayer'
+import PhotoSection from '../PhotoSection'
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger)
@@ -16,13 +18,9 @@ const Moments = () => {
   const backButtonRef = useRef(null)
   const polaroidScrollRef = useRef(null)
   const threePhotosScrollRef = useRef(null)
-  const titleRef = useRef(null)
   const firstParagraphRef = useRef(null)
-  const secondParagraphRef = useRef(null)
   const textBeforeImagesRef = useRef(null)
   const polaroidContainerRef = useRef(null)
-  const thirdParagraphRef = useRef(null)
-  const ferl1949Ref = useRef(null)
   const fourthParagraphRef = useRef(null)
   const threePhotosRowRef = useRef(null)
   const momentsTitleRef = useRef(null)
@@ -32,7 +30,6 @@ const Moments = () => {
   const galleryImagesRef = useRef(null)
   const endPhoto4Ref = useRef(null)
   const ry211ImageRef = useRef(null)
-  const photo2013Ref = useRef(null)
   const finalParagraphRef = useRef(null)
   const [selectedImage, setSelectedImage] = useState(null)
   const [selectedImageIndex, setSelectedImageIndex] = useState(null)
@@ -49,100 +46,38 @@ const Moments = () => {
 
   // All prenup images
   const allPrenupImages = [
-    '/assets/images/prenup/APA_0895.JPG',
-    '/assets/images/prenup/APA_0891.JPG',
-    '/assets/images/prenup/APA_0856.JPG',
-    '/assets/images/prenup/APA_0786%20-%20Copy.JPG',
-    '/assets/images/prenup/APA_0759.JPG',
-    '/assets/images/prenup/APA_0384.JPG',
-    '/assets/images/prenup/APA_0331.JPG',
-    '/assets/images/prenup/APA_0326.JPG',
-    '/assets/images/prenup/APA_0259.JPG',
-    '/assets/images/prenup/APA_0244.JPG',
-    '/assets/images/prenup/APA_0215.JPG',
-    '/assets/images/prenup/APA_0177.JPG',
-    '/assets/images/prenup/APA_0141.JPG',
-    '/assets/images/prenup/APA_0109.JPG',
-    '/assets/images/prenup/APA_9785.JPG',
-    '/assets/images/prenup/APA_9774.JPG',
-    '/assets/images/prenup/APA_9771.JPG',
-    '/assets/images/prenup/APA_9637.JPG',
-    '/assets/images/prenup/DSC03803%20-%20Copy.JPG',
-    '/assets/images/prenup/DSC03673.JPG',
-    '/assets/images/prenup/DSC03546.JPG',
-    '/assets/images/prenup/DSC03495.JPG',
-    '/assets/images/prenup/DSC03402.JPG',
-    '/assets/images/prenup/DSC03364.JPG',
-    '/assets/images/prenup/APA_0090.JPG',
-    '/assets/images/prenup/DSC03006.JPG',
-    '/assets/images/prenup/DSC02853.JPG',
-    '/assets/images/prenup/DSC02783.JPG',
-    '/assets/images/prenup/DSC02765.JPG'
+    '/assets/images/prenup/prenup-4.jpg',
+    '/assets/images/prenup/prenup-5.jpg',
+    '/assets/images/prenup/prenup-6.jpg',
+    '/assets/images/prenup/prenup-7.jpg',
+    '/assets/images/prenup/prenup-8.jpg',
+    '/assets/images/prenup/prenup-9.jpg',
+    '/assets/images/prenup/prenup-10.jpg',
+    '/assets/images/prenup/prenup-11.jpg'
   ]
 
   // Images array for the lightbox (includes all images in same order)
   const lightboxImages = [
-    '/assets/images/prenup/APA_0895.JPG',
-    '/assets/images/prenup/APA_0891.JPG',
-    '/assets/images/prenup/APA_0856.JPG',
-    '/assets/images/prenup/APA_0786%20-%20Copy.JPG',
-    '/assets/images/prenup/APA_0759.JPG',
-    '/assets/images/prenup/APA_0384.JPG',
-    '/assets/images/prenup/APA_0331.JPG',
-    '/assets/images/prenup/APA_0326.JPG',
-    '/assets/images/prenup/APA_0259.JPG',
-    '/assets/images/prenup/APA_0244.JPG',
-    '/assets/images/prenup/APA_0215.JPG',
-    '/assets/images/prenup/APA_0177.JPG',
-    '/assets/images/prenup/APA_0141.JPG',
-    '/assets/images/prenup/APA_0109.JPG',
-    '/assets/images/prenup/APA_9785.JPG',
-    '/assets/images/prenup/APA_9774.JPG',
-    '/assets/images/prenup/APA_9771.JPG',
-    '/assets/images/prenup/APA_9637.JPG',
-    '/assets/images/prenup/DSC03803%20-%20Copy.JPG',
-    '/assets/images/prenup/DSC03673.JPG',
-    '/assets/images/prenup/DSC03546.JPG',
-    '/assets/images/prenup/DSC03495.JPG',
-    '/assets/images/prenup/DSC03402.JPG',
-    '/assets/images/prenup/DSC03364.JPG',
-    '/assets/images/prenup/APA_0090.JPG',
-    '/assets/images/prenup/DSC03006.JPG',
-    '/assets/images/prenup/DSC02853.JPG',
-    '/assets/images/prenup/DSC02783.JPG',
-    '/assets/images/prenup/DSC02765.JPG'
+    '/assets/images/prenup/prenup-4.jpg',
+    '/assets/images/prenup/prenup-5.jpg',
+    '/assets/images/prenup/prenup-6.jpg',
+    '/assets/images/prenup/prenup-7.jpg',
+    '/assets/images/prenup/prenup-8.jpg',
+    '/assets/images/prenup/prenup-9.jpg',
+    '/assets/images/prenup/prenup-10.jpg',
+    '/assets/images/prenup/prenup-11.jpg'
   ]
 
-  // Gallery images for horizontal scroll (all unused images + top and bottom from love story)
+  // Gallery images for horizontal scroll
   const galleryImages = [
-    '/assets/images/prenup/APA_0895.JPG',
-    '/assets/images/prenup/APA_0891.JPG',
-    '/assets/images/prenup/APA_0856.JPG',
-    '/assets/images/prenup/APA_0786%20-%20Copy.JPG',
-    '/assets/images/prenup/APA_0384.JPG',
-    '/assets/images/prenup/APA_0331.JPG',
-    '/assets/images/prenup/APA_0326.JPG',
-    '/assets/images/prenup/APA_0259.JPG',
-    '/assets/images/prenup/APA_0244.JPG',
-    '/assets/images/prenup/APA_0215.JPG',
-    '/assets/images/prenup/APA_0177.JPG',
-    '/assets/images/prenup/APA_0141.JPG',
-    '/assets/images/prenup/APA_0109.JPG',
-    '/assets/images/prenup/APA_9785.JPG',
-    '/assets/images/prenup/APA_9774.JPG',
-    '/assets/images/prenup/APA_9771.JPG',
-    '/assets/images/prenup/APA_9637.JPG',
-    '/assets/images/prenup/DSC03803%20-%20Copy.JPG',
-    '/assets/images/prenup/DSC03673.JPG',
-    '/assets/images/prenup/DSC03546.JPG',
-    '/assets/images/prenup/DSC03495.JPG',
-    '/assets/images/prenup/DSC03402.JPG',
-    '/assets/images/prenup/DSC03364.JPG',
-    '/assets/images/prenup/APA_0090.JPG',
-    '/assets/images/prenup/DSC03006.JPG',
-    '/assets/images/prenup/DSC02853.JPG',
-    '/assets/images/prenup/DSC02783.JPG',
-    '/assets/images/prenup/DSC02765.JPG'
+    '/assets/images/prenup/prenup-4.jpg',
+    '/assets/images/prenup/prenup-5.jpg',
+    '/assets/images/prenup/prenup-6.jpg',
+    '/assets/images/prenup/prenup-7.jpg',
+    '/assets/images/prenup/prenup-8.jpg',
+    '/assets/images/prenup/prenup-9.jpg',
+    '/assets/images/prenup/prenup-10.jpg',
+    '/assets/images/prenup/prenup-11.jpg'
   ]
 
   // Polaroid images for the scrollable container
@@ -180,14 +115,6 @@ const Moments = () => {
       )
     }
 
-    // Our Story title animation on load
-    if (titleRef.current) {
-      gsap.fromTo(titleRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power2.out", delay: 0.7 }
-      )
-    }
-
     // First paragraph animation on load
     if (firstParagraphRef.current) {
       gsap.fromTo(firstParagraphRef.current,
@@ -222,8 +149,6 @@ const Moments = () => {
 
     // Scroll animations for paragraphs with slide-in effect
     const paragraphRefs = [
-      { ref: secondParagraphRef, direction: 'left' },
-      { ref: thirdParagraphRef, direction: 'right' },
       { ref: finalParagraphRef, direction: 'left' }
     ]
 
@@ -258,10 +183,8 @@ const Moments = () => {
     const scrollElements = [
       { ref: textBeforeImagesRef },
       { ref: polaroidContainerRef },
-      { ref: ferl1949Ref },
       { ref: fourthParagraphRef },
       { ref: threePhotosRowRef },
-      { ref: photo2013Ref },
       { ref: momentsTitleRef },
       { ref: momentsGridRef },
       { ref: pImagesGridRef }
@@ -510,131 +433,87 @@ const Moments = () => {
         className="relative w-full overflow-hidden min-h-screen"
         style={{ opacity: 0, transform: 'translateX(100%)' }}
       >
-        {/* Background Image */}
+        {/* Background - White */}
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: 'url(/assets/images/graphics/textured-bg-2.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            backgroundRepeat: 'no-repeat'
-          }}
+          className="absolute inset-0 bg-white"
         />
         
-        {/* Index Image at Top */}
-        <div className="relative z-20 w-full flex flex-col items-center">
-          <div className="relative w-screen group cursor-pointer" onClick={handleVideoOpen}>
+        {/* Image Banner - Similar to Details page */}
+        <div className="relative z-20 w-screen" style={{ width: '100vw' }}>
+          <div className="relative w-full h-[250px] sm:h-[250px] md:h-[300px] lg:h-[350px]">
             <img 
-              src="/assets/images/prenup/APA_0895.JPG" 
-              alt="Index image" 
-              className="w-full h-auto object-cover"
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
+              src="/assets/images/prenup/prenup-3.png" 
+              alt="Banner image"
+              className="w-full h-full object-cover"
             />
-            {/* Subtle Play Button Overlay */}
-            <div className="absolute inset-0 flex items-center justify-center bg-black/0 group-hover:bg-black/10 transition-colors duration-300">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 bg-white/40 hover:bg-white/60 rounded-full flex items-center justify-center shadow-md transition-all duration-300 group-hover:scale-105 opacity-70 group-hover:opacity-100">
-                <Play className="w-6 h-6 sm:w-7 sm:h-7 text-white/90 ml-0.5" fill="rgba(255, 255, 255, 0.9)" />
-              </div>
-            </div>
-          </div>
-          
-          {/* Our Story Title */}
-          <div ref={titleRef} className="w-full max-w-4xl text-center pt-12 pb-6 px-4">
-            <span className="nanum-myeongjo-regular text-2xl sm:text-3xl md:text-4xl lg:text-5xl inline-block" style={{ color: '#171717' }}>OUR</span>
-            <span 
-              className="stylish-calligraphy text-5xl sm:text-6xl md:text-7xl lg:text-8xl inline-block ml-2" 
-              style={{ 
-                lineHeight: '1.2',
-                color: '#006666',
-                display: 'inline-block',
-                paddingTop: '0.5rem',
-                paddingBottom: '0.5rem'
-              }}
+            {/* Soft transparent white gradient layers at bottom */}
+            <GradientLayer height="h-32" opacity={0.7} gradientId="whiteGradient1" />
+            <GradientLayer height="h-24" opacity={0.5} gradientId="whiteGradient2" />
+            <GradientLayer height="h-12" opacity={0.4} gradientId="whiteGradient3" />
+            <GradientLayer height="h-8" opacity={0.3} gradientId="whiteGradient4" />
+            <GradientLayer height="h-6" opacity={0.25} gradientId="whiteGradient5" />
+            <GradientLayer height="h-4" opacity={0.2} gradientId="whiteGradient6" />
+            
+            {/* Solid transition SVG at bottom */}
+            <svg 
+              className="absolute bottom-0 left-0 w-full h-[12px] pointer-events-none"
+              preserveAspectRatio="none"
+              viewBox="0 0 1200 12"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              Story
-            </span>
-          </div>
-          
-          {/* First Paragraph */}
-          {/* Love Story */}
-            <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-4">
-              <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
-                <p className="mb-4">
-                  At just 15 years old, the bride first encountered her future groom, a colleague of her father. On a lively evening, the groom graciously accompanied her father home from his birthday party. That night, as she studied, a gentle knock at the door sent her heart racing. When she opened it and saw him standing there, she flustered and quickly hid, a fleeting moment of magic passing between them, yet unacknowledged.
-                </p>
+              <defs>
+                <linearGradient id="solidTransitionMoments" x1="0%" y1="0%" x2="0%" y2="100%">
+                  <stop offset="0%" stopColor="rgba(255, 255, 255, 0.8)" />
+                  <stop offset="50%" stopColor="rgba(255, 255, 255, 0.95)" />
+                  <stop offset="100%" stopColor="rgba(255, 255, 255, 1)" />
+                </linearGradient>
+              </defs>
+              <rect width="100%" height="100%" fill="url(#solidTransitionMoments)" />
+            </svg>
+            
+            {/* Our Love Story Title at bottom */}
+            <div className="absolute bottom-0 left-0 w-full flex flex-col justify-center items-center pb-0.5 z-10">
+              <div className="w-full text-center">
+                {/* Our in Ballet font */}
+                <h1 className="font-ballet text-5xl sm:text-6xl md:text-7xl lg:text-8xl mb-2" style={{ color: '#333333' }}>
+                  Our
+                </h1>
+                {/* Love Story in Tebranos font */}
+                <h2 className="font-tebranos text-6xl sm:text-7xl md:text-8xl lg:text-9xl uppercase mb-4 -mt-6" style={{ 
+                  color: '#800000'
+                }}>
+                  Love Story
+                </h2>
               </div>
-           </div>
-
-           {/* Third Paragraph */}
-
-           {/* FERL1949 Photo */}
-           <div ref={ferl1949Ref} className="relative z-20 w-full max-w-2xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 flex justify-center">
-             <img
-               src="/assets/images/prenup/APA_0331.JPG"
-               alt="Love story photo"
-               className="w-full h-auto object-cover cursor-pointer"
-               loading="lazy"
-               decoding="async"
-               onClick={() => {
-                 const imageIndex = galleryImages.indexOf('/assets/images/prenup/APA_0331.JPG')
-                 setSelectedImage('/assets/images/prenup/APA_0331.JPG')
-                 setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
-               }}
-             />
-           </div>
-
-           {/* Story text after first photo */}
-           <div ref={secondParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8">
-             <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
-               <p className="mb-4">
-                 Life led them down separate journeys but fate had other plans. Many years later, as she prepared to drive her first car, her father called upon the groom to lend a hand.
-               </p>
-             </div>
-           </div>
-
-            {/* FERL2103 Photo */}
-            <div ref={photo2013Ref} className="relative z-20 w-full max-w-2xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8 flex justify-center mx-auto">
-              <img
-                src="/assets/images/prenup/DSC02765.JPG"
-                alt="2013 Photo"
-                className="w-full h-auto object-cover cursor-pointer"
-                loading="lazy"
-                decoding="async"
-                onClick={() => {
-                  const imageIndex = galleryImages.indexOf('/assets/images/prenup/DSC02765.JPG')
-                  setSelectedImage('/assets/images/prenup/DSC02765.JPG')
-                  setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
-                }}
-              />
             </div>
-
-           {/* Story text after second photo */}
-           <div ref={thirdParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16 mt-8">
-             <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
-               <p className="mb-4">
-                 That driving lesson blossomed into a beautiful connection filled with laughter, shared dreams, and rediscovery. Over the past five years, they have not only celebrated milestones but have also faced challenges that have made them better individuals. Supporting one another through thick and thin, they have both grown stronger and more compassionate, embodying the true essence of partnership.
-               </p>
-             </div>
-           </div>
+          </div>
+        </div>
+        
+        {/* Love Story Section */}
+        <div className="relative z-20 w-full flex flex-col items-center bg-white py-12">
+          <div ref={firstParagraphRef} className="relative z-20 w-full max-w-4xl px-8 sm:px-12 md:px-8 lg:px-16">
+            <div className="alice-regular font-black text-[#333333] leading-relaxed text-center" style={{ fontWeight: 900, fontSize: '1rem', lineHeight: '1.8' }}>
+              <p className="mb-4">
+                They met online—a simple swipe, a message, and just like that, their story began. What started as casual chats and getting to know each other turned into something real. They've laughed together, supported each other through ups and downs, and built something special. Through it all, they've grown closer and stronger, showing that sometimes the best connections happen when you least expect them.
+              </p>
+            </div>
+          </div>
+        </div>
 
            {/* Moments Gallery Section */}
            <div 
              ref={momentsGridRef} 
              className="relative z-20 w-full flex flex-col mt-8"
              style={{
-               backgroundColor: '#f4f5ef'
+               backgroundImage: 'url(/assets/images/graphics/bg-3.png)',
+               backgroundSize: '100% 80%',
+               backgroundPosition: 'center top',
+               backgroundRepeat: 'no-repeat'
              }}
            >
              {/* Title - Full Width at Top */}
              <div className="relative z-20 w-full" style={{ border: 'none' }}>
                <h2 ref={momentsTitleRef} className="w-full text-center px-4" style={{
-                 backgroundImage: 'url(/assets/images/graphics/teal-2.png)',
-                     backgroundSize: 'cover',
-                 backgroundPosition: 'center',
-                 backgroundRepeat: 'no-repeat',
-                 color: '#f5f5f0',
                  paddingTop: '4rem',
                  paddingBottom: '4rem',
                  overflow: 'visible',
@@ -672,13 +551,6 @@ const Moments = () => {
              {/* Content Container */}
              <div 
                className="w-full flex flex-col relative z-10"
-                   style={{
-                 backgroundImage: 'url(/assets/images/graphics/teal-2.png)',
-                 backgroundSize: '100% 50%',
-                 backgroundPosition: 'top center',
-                 backgroundRepeat: 'no-repeat',
-                 backgroundColor: '#f4f5ef'
-               }}
              >
                {/* Horizontal Scrollable Images */}
                <div 
@@ -734,15 +606,6 @@ const Moments = () => {
                </div>
              </div>
 
-             {/* Image Slider Graphic - Bottom Right */}
-             <img
-               src="/assets/images/graphics/image-slider.png"
-               alt="Image slider decoration"
-               className="absolute bottom-0 right-0 w-32 sm:w-40 md:w-48 opacity-50"
-               style={{ zIndex: 1 }}
-               loading="lazy"
-               decoding="async"
-             />
            </div>
 
            {/* Story text before final photo */}
@@ -754,26 +617,213 @@ const Moments = () => {
              </div>
            </div>
 
-           {/* R&Y-209 Photo - Full Width After Gallery */}
+           {/* Final Photo - Full Width After Gallery */}
            <div ref={endPhoto4Ref} className="relative z-20 w-screen mt-8">
              <div className="relative">
                <img
-                 src="/assets/images/prenup/APA_0259.JPG"
+                 src="/assets/images/prenup/prenup-11.jpg"
                  alt="Love story photo"
                  className="w-full h-auto object-cover cursor-pointer"
                  loading="lazy"
                  decoding="async"
                  onClick={() => {
-                   const imageIndex = galleryImages.indexOf('/assets/images/prenup/APA_0259.JPG')
-                   setSelectedImage('/assets/images/prenup/APA_0259.JPG')
+                   const imageIndex = galleryImages.indexOf('/assets/images/prenup/prenup-11.jpg')
+                   setSelectedImage('/assets/images/prenup/prenup-11.jpg')
                    setSelectedImageIndex(imageIndex !== -1 ? imageIndex : 0)
                  }}
                />
              </div>
            </div>
 
+           {/* Second Moments Section - All 5 Polaroids in One Container */}
+           {/* <div className="relative z-20 w-full mt-12 pb-12">
+             <div className="relative w-full pt-32 pb-12 overflow-hidden">
+               Background Handwriting Text
+               <div 
+                 className="absolute inset-0 pointer-events-none z-0"
+                 style={{
+                   opacity: 0.3
+                 }}
+               >
+                 <p 
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   style={{
+                     position: 'absolute',
+                     top: '5%',
+                     left: '-5%',
+                     transform: 'rotate(-5deg)'
+                   }}
+                 >
+                   Forever
+                 </p>
+                 <p 
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   style={{
+                     position: 'absolute',
+                     top: '25%',
+                     right: '-8%',
+                     transform: 'rotate(8deg)'
+                   }}
+                 >
+                   Always
+                 </p>
+                 <p 
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   style={{
+                     position: 'absolute',
+                     bottom: '25%',
+                     left: '-8%',
+                     transform: 'rotate(-8deg)'
+                   }}
+                 >
+                   Together
+                 </p>
+                 <p 
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   style={{
+                     position: 'absolute',
+                     bottom: '5%',
+                     right: '-5%',
+                     transform: 'rotate(5deg)'
+                   }}
+                 >
+                   Love
+                 </p>
+                 <p 
+                   className="font-handwritten text-5xl sm:text-6xl md:text-7xl lg:text-8xl text-[#800000] whitespace-nowrap"
+                   style={{
+                     position: 'absolute',
+                     top: '50%',
+                     left: '50%',
+                     transform: 'translate(-50%, -50%) rotate(-3deg)'
+                   }}
+                 >
+                   Us
+                 </p>
+               </div>
+               
+               <div className="relative z-10 flex flex-col items-center max-w-4xl mx-auto px-4">
+                 <div className="relative w-full h-80 sm:h-96 lg:h-[500px] flex justify-center items-center mb-8">
+                   <div 
+                     className="absolute -top-6 -left-8 sm:left-4 w-40 h-48 sm:w-60 sm:h-72 lg:w-72 lg:h-88 bg-white shadow-lg transform -rotate-12 opacity-90"
+                     style={{
+                       border: '4px solid white',
+                       borderTop: '4px solid white'
+                     }}
+                   >
+                     <div 
+                       className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+                       style={{
+                         backgroundImage: 'url(/assets/images/prenup/prenup-7.jpg)',
+                         borderTop: '4px solid white',
+                         borderLeft: '4px solid white',
+                         borderRight: '4px solid white'
+                       }}
+                     ></div>
+                     <div className="p-2 text-center">
+                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                         Memories
+                       </div>
+                     </div>
+                   </div>
+                   
+                   <div 
+                     className="relative w-40 h-48 sm:w-60 sm:h-72 lg:w-72 lg:h-88 bg-white shadow-xl transform rotate-3 hover:scale-105 transition-transform duration-300"
+                     style={{
+                       border: '4px solid white',
+                       borderTop: '4px solid white'
+                     }}
+                   >
+                     <div 
+                       className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+                       style={{
+                         backgroundImage: 'url(/assets/images/prenup/prenup-8.jpg)',
+                         borderTop: '4px solid white',
+                         borderLeft: '4px solid white',
+                         borderRight: '4px solid white'
+                       }}
+                     ></div>
+                     <div className="p-2 text-center">
+                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                         Together
+                       </div>
+                     </div>
+                   </div>
+                   
+                   <div 
+                     className="absolute -top-4 -right-8 sm:right-4 w-40 h-48 sm:w-60 sm:h-72 lg:w-72 lg:h-88 bg-white shadow-lg transform rotate-6"
+                     style={{
+                       border: '4px solid white',
+                       borderTop: '4px solid white'
+                     }}
+                   >
+                     <div 
+                       className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+                       style={{
+                         backgroundImage: 'url(/assets/images/prenup/prenup-9.jpg)',
+                         borderTop: '4px solid white',
+                         borderLeft: '4px solid white',
+                         borderRight: '4px solid white'
+                       }}
+                     ></div>
+                     <div className="p-2 text-center">
+                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                         Love
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+                 
+                 <div className="relative w-full h-80 sm:h-96 lg:h-[500px] flex justify-center items-center">
+                   <div 
+                     className="absolute -left-8 sm:left-4 w-40 h-48 sm:w-60 sm:h-72 lg:w-72 lg:h-88 bg-white shadow-xl transform -rotate-6 hover:scale-105 transition-transform duration-300"
+                     style={{
+                       border: '4px solid white',
+                       borderTop: '4px solid white'
+                     }}
+                   >
+                     <div 
+                       className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+                       style={{
+                         backgroundImage: 'url(/assets/images/prenup/prenup-10.jpg)',
+                         borderTop: '4px solid white',
+                         borderLeft: '4px solid white',
+                         borderRight: '4px solid white'
+                       }}
+                     ></div>
+                     <div className="p-2 text-center">
+                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                         Forever
+                       </div>
+                     </div>
+                   </div>
 
-         </div>
+                   <div 
+                     className="absolute -right-8 sm:right-4 w-40 h-48 sm:w-60 sm:h-72 lg:w-72 lg:h-88 bg-white shadow-xl transform rotate-6 hover:scale-105 transition-transform duration-300"
+                     style={{
+                       border: '4px solid white',
+                       borderTop: '4px solid white'
+                     }}
+                   >
+                     <div 
+                       className="w-full h-40 sm:h-60 lg:h-72 bg-cover bg-center"
+                       style={{
+                         backgroundImage: 'url(/assets/images/prenup/prenup-11.jpg)',
+                         borderTop: '4px solid white',
+                         borderLeft: '4px solid white',
+                         borderRight: '4px solid white'
+                       }}
+                     ></div>
+                     <div className="p-2 text-center">
+                       <div className="text-sm sm:text-lg text-[#800000] font-handwritten">
+                         Always
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+               </div>
+             </div>
+           </div> */}
        </section>
       
       {/* Back Button - Circular, Bottom Right - Outside section to avoid transform issues */}
